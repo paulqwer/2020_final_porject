@@ -93,23 +93,23 @@ class TocMachine(GraphMachine):
             )
         )
     def do_male2_comp(self,event,te):
-        index = 0
-        while index < 16:
-            if male_twicher_name[index] == te:
-                male_used[index] = 1
-                break
-            else :
-                index += 1
-        num1 = random.randint(0,15)
-        num2 = random.randint(0,15)
-        while male_used[num1] != 0 or male_used[num1] != -1:
-            num1 = random.randint(0,15)
-        while num1 == num2 or male_used[num2] != 1 or male_used[num2] != -1:
-            num2 = random.randint(0,15)
-        male_used[num1] = -1
-        male_used[num2] = -1
-        s1 = male_twicher_name[num1]
-        s2 = male_twicher_name[num2]
+        # index = 0
+        # while index < 16:
+        #     if male_twicher_name[index] == te:
+        #         male_used[index] = 1
+        #         break
+        #     else :
+        #         index += 1
+        # num1 = random.randint(0,15)
+        # num2 = random.randint(0,15)
+        # while male_used[num1] != 0 or male_used[num1] != -1:
+        #     num1 = random.randint(0,15)
+        # while num1 == num2 or male_used[num2] != 1 or male_used[num2] != -1:
+        #     num2 = random.randint(0,15)
+        # male_used[num1] = -1
+        # male_used[num2] = -1
+        # s1 = male_twicher_name[num1]
+        # s2 = male_twicher_name[num2]
         line_bot_api.reply_message(
             event.reply_token,
             TemplateSendMessage(
