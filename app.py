@@ -118,7 +118,8 @@ def webhook_handler():
             if event.message.text == "男性":
                 machine.to_male_1()
         elif machine.state == "to_male_1":
-            machine.do_nothing()
+            if event.message.text == "你好":
+                machine.do_nothing(event)
 
 
 
