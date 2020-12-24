@@ -14,7 +14,7 @@ load_dotenv()
 
 
 machine = TocMachine(
-    states=["user", "state1", "state2", "in", "choose","male"],
+    states=["user", "state1", "state2", "in", "choose","male","comp1"],
     transitions=[
         {
             "trigger": "advance",
@@ -31,6 +31,7 @@ machine = TocMachine(
         { "trigger" : "go_back_intro", "source" : "choose", "dest" : "in"},
         { "trigger" : "to_choose", "source" : "in", "dest" : "choose"},
         { "trigger" : "to_male", "source" : "choose", "dest" : "male"},
+        { "trigger" : "to_comp1", "source":"male", "dest" : "comp1"},
         {"trigger": "go_back", "source": ["state1", "state2"], "dest": "user"},
     ],
     initial="in",
@@ -117,6 +118,15 @@ def webhook_handler():
         if machine.state == "choose":
             if event.message.text == "男性":
                 machine.to_male(event)
+        if machine.state == "male":
+            index = 0
+            while index < 16:
+                if event.message.text == male_twicher_name[index]:
+                    machine.to_comp1(event)
+                    break
+                else :
+                    index = index + 1   
+
         
 
 
