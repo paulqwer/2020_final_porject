@@ -14,12 +14,18 @@ load_dotenv()
 
 
 machine = TocMachine(
-    states=[ "in", "choose","male","male2","mcomp1","mcomp2"],
+    states=[ "in", "choose","male","male2","male3","male4","male5","male6","male7","male8","mcomp1","mcomp2"],
     transitions=[
-        { "trigger" : "go_back_intro", "source" : "choose", "dest" : "in"},
+        { "trigger" : "go_back_intro", "source" : ["choose","male", "male2"], "dest" : "in"},
         { "trigger" : "to_choose", "source" : "in", "dest" : "choose"},
         { "trigger" : "to_male", "source" : "choose", "dest" : "male"},
         { "trigger" : "to_male2","source":"male","dest":"male2"},
+        { "trigger" : "to_male3","source":"male2","dest":"male3"},
+        { "trigger" : "to_male4","source":"male3","dest":"male4"},
+        { "trigger" : "to_male5","source":"male4","dest":"male5"},
+        { "trigger" : "to_male6","source":"male5","dest":"male6"},
+        { "trigger" : "to_male7","source":"male6","dest":"male7"},
+        { "trigger" : "to_male8","source":"male7","dest":"male8"},
         { "trigger" : "to_mcomp1", "source":"male", "dest" : "mcomp1"},
         { "trigger" : "to_mcomp2", "source":"mcomp1","dest" : "mcomp2"},
         {"trigger": "go_back", "source": ["state1", "state2"], "dest": "user"},
@@ -111,13 +117,36 @@ def webhook_handler():
         if machine.state == "male":
             if  event.message.text == "6tan" or event.message.text == "餐哥" or event.message.text == "鳥屎" or event.message.text == "國棟" or event.message.text == "虧皮" or event.message.text == "館長" or event.message.text == "爆哥" or event.message.text == "Rex" or event.message.text == "KO" or event.message.text == "Toyz" or event.message.text == "NL(MK)" or event.message.text == "老皮" or event.message.text == "史丹利" or event.message.text =="花輪" or event.message.text == "懶貓" or event.message.text == "UZRA":
                 index = 0
+                first_round_times += 1
                 while index < 16:
                     if male_twicher_name[index] == event.message.text:
                         machine.do_times_count(event,index,first_round_times)
                         break
                     else :
                         index += 1
-                # machine.to_male2(event)
+                machine.to_male2(event)
+        if machine.state == "male2":
+            if  event.message.text == "6tan" or event.message.text == "餐哥" or event.message.text == "鳥屎" or event.message.text == "國棟" or event.message.text == "虧皮" or event.message.text == "館長" or event.message.text == "爆哥" or event.message.text == "Rex" or event.message.text == "KO" or event.message.text == "Toyz" or event.message.text == "NL(MK)" or event.message.text == "老皮" or event.message.text == "史丹利" or event.message.text =="花輪" or event.message.text == "懶貓" or event.message.text == "UZRA":
+                index = 0
+                first_round_times += 1
+                while index < 16:
+                    if male_twicher_name[index] == event.message.text:
+                        machine.do_times_count(event,index,first_round_times)
+                        break
+                    else :
+                        index += 1
+                machine.to_male3(event)
+        if machine.state == "male3":
+            if  event.message.text == "6tan" or event.message.text == "餐哥" or event.message.text == "鳥屎" or event.message.text == "國棟" or event.message.text == "虧皮" or event.message.text == "館長" or event.message.text == "爆哥" or event.message.text == "Rex" or event.message.text == "KO" or event.message.text == "Toyz" or event.message.text == "NL(MK)" or event.message.text == "老皮" or event.message.text == "史丹利" or event.message.text =="花輪" or event.message.text == "懶貓" or event.message.text == "UZRA":
+                index = 0
+                first_round_times += 1
+                while index < 16:
+                    if male_twicher_name[index] == event.message.text:
+                        machine.do_times_count(event,index,first_round_times)
+                        break
+                    else :
+                        index += 1
+                machine.to_male4(event)    
                 
         # if machine.state == "mcomp1":
         #     index = 0   
