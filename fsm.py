@@ -1,7 +1,12 @@
 from transitions.extensions import GraphMachine
+import os
 
 from utils import send_text_message
+from linebot.models import (MessageEvent, TextMessage, TextSendMessage,TemplateSendMessage,ButtonsTemplate,MessageTemplateAction)
+from linebot import LineBotApi, WebhookParser
 
+channel_access_token = os.getenv("LINE_CHANNEL_ACCESS_TOKEN", None)
+line_bot_api = LineBotApi(channel_access_token)
 
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
@@ -34,3 +39,33 @@ class TocMachine(GraphMachine):
 
     def on_exit_state2(self):
         print("Leaving state2")
+
+    def introduce(self,event):
+        reply_token = event.reply_token
+        send_text_message(reply_token,"===歡迎來到台灣實況主二選一===\n===輸入{開始}即可進入===\n===輸入{結束}可以重新開始===")
+    
+    def on_enter_in(self,event):
+        reply_token = event.reply_token
+        send_text_message(reply_token,"===歡迎來到台灣實況主二選一===\n===輸入{開始}即可進入===\n===輸入{結束}可以重新開始===")
+
+    def  on_enter_choose(self,event):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TemplateSendMessage(
+                alt_text = 'Button template',
+                template = ButtonsTemplate(
+                    title = '選擇',
+                    text = '請選擇實況主的性別',
+                    actions = [
+                        MessageTemplateAction(
+                            label = '男性',
+                            text = '男性'
+                        ),
+                        MessageTemplateAction(
+                            label = '女性',
+                            text = '女性'
+                        )
+                    ]
+                )
+            )
+        )
