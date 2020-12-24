@@ -116,7 +116,8 @@ def webhook_handler():
         elif machine.state == "choose":
             if event.message.text == "男性":
                 machine.to_male(event)
-                
+                machine.do_male_compete(event)
+
     return "OK"
 
 
