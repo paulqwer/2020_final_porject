@@ -92,9 +92,14 @@ class TocMachine(GraphMachine):
                 )
             )
         )
-    def do_times_count(self,event,index,times):
-        i = 0
-        male_used[index] = times
+    def do_times_count(self,event,text,times):
+        index = 0
+        while index < 16:
+            if male_twicher_name[index] == text:
+                male_used[index] = times
+                break
+            else :
+                index += 1
         send_text_message(event.reply_token,times)
 
     def on_enter_male2(self,event):
