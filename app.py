@@ -14,7 +14,7 @@ load_dotenv()
 
 
 machine = TocMachine(
-    states=["user", "state1", "state2", "in"],
+    states=["user", "state1", "state2", "in", "choose"],
     transitions=[
         {
             "trigger": "advance",
@@ -28,6 +28,8 @@ machine = TocMachine(
             "dest": "state2",
             "conditions": "is_going_to_state2",
         },
+        { "trigger" : "go_back_intro", "source" : "choose", "dest" : "in"},
+        { "trigger" : "to_choose", "source" : "in", "dest" : "choose"},
         {"trigger": "go_back", "source": ["state1", "state2"], "dest": "user"},
     ],
     initial="in",
@@ -103,9 +105,12 @@ def webhook_handler():
         print(f"\nFSM STATE: {machine.state}")
         print(f"REQUEST BODY: \n{body}")
 
+        
         if machine.state == "in":
             if event.message.text == "介紹":
                 machine.introduce(event)
+            if event.message.text == "開始":
+                machine.to_choose(event)
         
     return "OK"
 
