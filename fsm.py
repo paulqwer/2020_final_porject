@@ -190,7 +190,7 @@ class TocMachine(GraphMachine):
     def do_times_count(self,event,index,times):
         i = 0
         male_used[index] = times
-        #send_text_message(event.reply_token,male_twicher_name[index])
+        send_text_message(event.reply_token,male_twicher_name[index])
 
     def do_nothing(self,event):
         reply_token = event.reply_token
