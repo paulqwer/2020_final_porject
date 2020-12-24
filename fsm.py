@@ -83,7 +83,7 @@ class TocMachine(GraphMachine):
         num2 = random.randint(0,15)
         while male_used[num1] != 0:
             num1 = random.randint(0,15)
-        while num1 != num2 and male_used[num2] == 0:
+        while num1 == num2 and male_used[num2] != 0:
             num2 = random.randint(0,15)
         male_used[num1] = male_used[num1] + 1
         male_used[num2] = male_used[num2] + 1
