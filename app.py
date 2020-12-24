@@ -124,7 +124,8 @@ def webhook_handler():
                         break
                     else :
                         index += 1
-                machine.to_male2(event)
+                machine.do_nothing(event)
+                #machine.to_male2(event)
         if machine.state == "male2":
             if  event.message.text == "6tan" or event.message.text == "餐哥" or event.message.text == "鳥屎" or event.message.text == "國棟" or event.message.text == "虧皮" or event.message.text == "館長" or event.message.text == "爆哥" or event.message.text == "Rex" or event.message.text == "KO" or event.message.text == "Toyz" or event.message.text == "NL(MK)" or event.message.text == "老皮" or event.message.text == "史丹利" or event.message.text =="花輪" or event.message.text == "懶貓" or event.message.text == "UZRA":
                 index = 0
