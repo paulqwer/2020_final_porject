@@ -105,7 +105,8 @@ def webhook_handler():
         print(f"\nFSM STATE: {machine.state}")
         print(f"REQUEST BODY: \n{body}")
 
-        
+        if event.message.text == "結束":
+            machine.go_back_intro(event)
         if machine.state == "in":
             if event.message.text == "介紹":
                 machine.introduce(event)
