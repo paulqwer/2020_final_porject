@@ -14,7 +14,7 @@ load_dotenv()
 
 
 machine = TocMachine(
-    states=["user", "state1", "state2", "in", "choose","male"],
+    states=["user", "state1", "state2", "in", "choose","male_1"],
     transitions=[
         {
             "trigger": "advance",
@@ -30,7 +30,7 @@ machine = TocMachine(
         },
         { "trigger" : "go_back_intro", "source" : "choose", "dest" : "in"},
         { "trigger" : "to_choose", "source" : "in", "dest" : "choose"},
-        { "trigger" : "to_male", "source" : "choose", "dest" : "male"},
+        { "trigger" : "to_male_1", "source" : "choose", "dest" : "male_1"},
         {"trigger": "go_back", "source": ["state1", "state2"], "dest": "user"},
     ],
     initial="in",
@@ -39,7 +39,8 @@ machine = TocMachine(
 )
 
 app = Flask(__name__, static_url_path="")
-
+#                       1     2      3      4     5      6     7      8     9         10      11      12    13       14     15    16
+male_twicher_name = ['6tan','餐哥','鳥屎','國棟','虧皮','館長','爆哥','Rex','KO0416','Toyz','NL(MK)', '老皮','史丹利','花輪','懶貓','UZRA']
 
 # get channel_secret and channel_access_token from your environment variable
 channel_secret = os.getenv("LINE_CHANNEL_SECRET", None)
@@ -115,8 +116,9 @@ def webhook_handler():
                 machine.to_choose(event)
         elif machine.state == "choose":
             if event.message.text == "男性":
-                machine.to_male(event)
+                machine.to_male_1()
                 machine.do_male_compete(event)
+
 
     return "OK"
 

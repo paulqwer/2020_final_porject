@@ -69,9 +69,10 @@ class TocMachine(GraphMachine):
                 )
             )
         )
-    def on_enter_male(self,event):
-        reply_token = event.reply_token
-        send_text_message(reply_token, "您已進入男性選擇區 haha")
+    # def on_enter_male(self,event):
+    #     reply_token = event.reply_token
+    #     send_text_message(reply_token, "您已進入男性選擇區 haha")
+    
     def do_male_compete(self,event):
         reply_token = event.reply_token
         send_text_message(reply_token, "您已進入男性選擇區")
