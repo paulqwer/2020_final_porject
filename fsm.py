@@ -98,12 +98,12 @@ class TocMachine(GraphMachine):
                     text = '請選擇你最喜歡的實況主',
                     actions = [
                         MessageTemplateAction(
-                            label = s1,
-                            text = s1
+                            label = 's1',
+                            text = 's1'
                         ),
                         MessageTemplateAction(
-                            label = s2,
-                            text = s2
+                            label = 's2',
+                            text = 's2'
                         )
                     ]
                 )
