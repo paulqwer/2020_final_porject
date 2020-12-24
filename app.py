@@ -5,7 +5,7 @@ from flask import Flask, jsonify, request, abort, send_file
 from dotenv import load_dotenv
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage,  TemplateSendMessage,  ButtonsTemplate, MessageTemplateAction, PostbackEvent, PostbackTemplateAction
+from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
 from fsm import TocMachine
 from utils import send_text_message
@@ -14,7 +14,7 @@ load_dotenv()
 
 
 machine = TocMachine(
-    states=["user", "state1", "state2", "in", "chooese", "male", "female"],
+    states=["user", "state1", "state2"],
     transitions=[
         {
             "trigger": "advance",
@@ -28,13 +28,9 @@ machine = TocMachine(
             "dest": "state2",
             "conditions": "is_going_to_state2",
         },
-        { "triiger" : "to_choose", "source" : "in", "dest" : "choose"},
-        { "trigger" : "to_male", "source" : "choose", "dest" : "male"},
-        { "trigger" : "to_female", "source" : "choose", "dest" : "female"},
-        { "trigger" : "go_back_intro", "source" : ["choose","female","male","female"], "dest" : "in"},
         {"trigger": "go_back", "source": ["state1", "state2"], "dest": "user"},
     ],
-    initial="in",
+    initial="user",
     auto_transitions=False,
     show_conditions=True,
 )
@@ -106,21 +102,10 @@ def webhook_handler():
             continue
         print(f"\nFSM STATE: {machine.state}")
         print(f"REQUEST BODY: \n{body}")
-        if event.message.text == "結束":
-            machine.go_back_intro(event)
-        if  machine.state == "in":
-            if event.message.text == "進入" : 
-                machine.introduce(event)
-            if event.message.text == "開始":
-                machine.to_choose(event)
-        elif machine.state == "choose":
-            if event.message.text == "男性":
-                machine.to_male(event)
-            elif event.message.text == "女性":
-                machine.to_female(event)
-        
-        if event.message.text == "幹":
-            send_text_message(event.reply_token,"糙你的")
+        response = machine.advance(event)
+        if response == False:
+            send_text_message(event.reply_token, "Not Entering any State")
+
     return "OK"
 
 
