@@ -114,8 +114,8 @@ def webhook_handler():
                 machine.introduce(event)
             if event.message.text == "開始":
                 machine.to_choose(event)
-            if event.message.text == "男性":
-                machine.to_male_1_1(event)
+                if event.message.text == "男性":
+                    machine.to_male_1_1(event)
         elif machine.state == "to_male_1":
             if event.message.text == "你好":
                 machine.do_nothing(event)
