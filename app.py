@@ -31,7 +31,7 @@ machine = TocMachine(
         { "triiger" : "to_choose", "source" : "in", "dest" : "choose"},
         { "trigger" : "to_male", "source" : "choose", "dest" : "male"},
         { "trigger" : "to_female", "source" : "choose", "dest" : "female"},
-        { "trigger" : "go_back_intro", "source" : ["choose","female","male","in"], "dest" : "in"},
+        { "trigger" : "go_back_intro", "source" : ["choose","female","male","female"], "dest" : "in"},
         {"trigger": "go_back", "source": ["state1", "state2"], "dest": "user"},
     ],
     initial="in",
