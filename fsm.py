@@ -174,4 +174,4 @@ class TocMachine(GraphMachine):
 
         def do_nothing(self,event):
             reply_token = event.reply_token
-            send_text_message(event.reply_token, "nothing")
+            send_text_message(reply_token, "nothing")
