@@ -92,7 +92,7 @@ class TocMachine(GraphMachine):
                 )
             )
         )
-    def do_times_count(self,event,text,times):
+    def do_male2_comp(self,event,text,times):
         index = 0
         while index < 16:
             if male_twicher_name[index] == text:
@@ -100,7 +100,6 @@ class TocMachine(GraphMachine):
                 break
             else :
                 index += 1
-    def do_male2_comp(self,event):
         num1 = random.randint(0,15)
         num2 = random.randint(0,15)
         while male_used[num1] != 0 or male_used[num1] != -1:
