@@ -78,7 +78,7 @@ class TocMachine(GraphMachine):
     #     reply_token = event.reply_token
     #     send_text_message(reply_token, "您已進入男性選擇區 haha")
     
-    def on_enter_male_1(self,event,times):
+    def on_enter_male_1_1(self,event):
         num1 = random.randint(0,15)
         num2 = random.randint(0,15)
         while male_used[num1] != 0:
@@ -98,12 +98,12 @@ class TocMachine(GraphMachine):
                     text = '請選擇你最喜歡的實況主',
                     actions = [
                         MessageTemplateAction(
-                            label = 's1',
-                            text = 's1'
+                            label = s1,
+                            text = s1
                         ),
                         MessageTemplateAction(
-                            label = 's2',
-                            text = 's2'
+                            label = s2,
+                            text = s2
                         )
                     ]
                 )
