@@ -129,6 +129,7 @@ class TocMachine(GraphMachine):
     def do_times_count(self,event,index,times):
         i = 0
         male_used[index] = times
+        send_text_message(event.reply_token,male_twicher_name[index])
     # def on_enter_comop1(self,event):
     #     num1 = random.randint(0,15)
     #     num2 = random.randint(0,15)
