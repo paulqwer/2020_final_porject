@@ -120,6 +120,7 @@ def webhook_handler():
                             index += 1
                     if first_round_times != 8:
                         machine.do_f_compete(event,first_round_times+1)
+            machine.do_nothing()
         # if machine.state == "mcomp1":
         #     index = 0   
         #     while index < 16:
