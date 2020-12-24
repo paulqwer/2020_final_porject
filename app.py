@@ -119,27 +119,27 @@ def webhook_handler():
         if machine.state == "choose":
             if event.message.text == "男性":
                 machine.to_male(event,0)
-        if machine.state == "male":
-           first_round_times = first_round_times + 1
-           while first_round_times != 8:
-                index = 0   
-                while index < 16:
-                    if event.message.text == male_twicher_name[index]:
-                        machine.do_times_count(event,male_twicher_name[index])
-                        break
-                    else :
-                        index = index + 1
-                machine.do_first_round_compete(event,first_round_times)
-                first_round_times += 1
+        # if machine.state == "male":
+        #    first_round_times = first_round_times + 1
+        #    while first_round_times != 8:
+        #         index = 0   
+        #         while index < 16:
+        #             if event.message.text == male_twicher_name[index]:
+        #                 machine.do_times_count(event,male_twicher_name[index])
+        #                 break
+        #             else :
+        #                 index = index + 1
+        #         machine.do_first_round_compete(event,first_round_times)
+        #         first_round_times += 1
 
-        if machine.state == "mcomp1":
-            index = 0   
-            while index < 16:
-                if event.message.text == male_twicher_name[index]:
-                    machine.to_mcomp2(event)
-                    break
-                else :
-                    index = index + 1
+        # if machine.state == "mcomp1":
+        #     index = 0   
+        #     while index < 16:
+        #         if event.message.text == male_twicher_name[index]:
+        #             machine.to_mcomp2(event)
+        #             break
+        #         else :
+        #             index = index + 1
             
         
 
