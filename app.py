@@ -112,7 +112,7 @@ def webhook_handler():
             if isinstance(event,MessageEvent):
                 index = 0
                 while index < 16:
-                    if male_twicher_name[index] == event.message.text:
+                    if event.message.text == male_twicher_name[index]:
                         machine.do_nothing(event)
                         break
                     else :
