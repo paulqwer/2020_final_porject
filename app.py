@@ -118,7 +118,7 @@ def webhook_handler():
                 machine.to_choose(event)
         if machine.state == "choose":
             if event.message.text == "男性":
-                machine.to_male(event,0)
+                machine.to_male(event)
         # if machine.state == "male":
         #    first_round_times = first_round_times + 1
         #    while first_round_times != 8:
