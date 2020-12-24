@@ -92,11 +92,11 @@ class TocMachine(GraphMachine):
                 )
             )
         )
-    def do_male2_comp(self,event,text,times):
+    def do_male2_comp(self,event,text):
         index = 0
         while index < 16:
             if male_twicher_name[index] == text:
-                male_used[index] = times
+                male_used[index] = 1
                 break
             else :
                 index += 1
