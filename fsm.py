@@ -79,6 +79,8 @@ class TocMachine(GraphMachine):
     #     send_text_message(reply_token, "您已進入男性選擇區 haha")
     
     def on_enter_male_1_1(self,event):
+        reply_token = event.reply_token
+        send_text_message(reply_token, "nothing")
         num1 = random.randint(0,15)
         num2 = random.randint(0,15)
         while male_used[num1] != 0:
