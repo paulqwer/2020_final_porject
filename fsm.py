@@ -63,16 +63,10 @@ class TocMachine(GraphMachine):
     #     reply_token = event.reply_token
     #     send_text_message(reply_token, "您已進入男性選擇區 haha")
     
-    def do_times_count(self,event,index,times):
-        i = 0
-        male_used[index] = times
-        send_text_message(event.reply_token,male_twicher_name[index])
     def on_enter_male(self,event):
         num1 = random.randint(0,15)
         num2 = random.randint(0,15)
-        while male_used[num1] != 0:
-            num1 = random.randint(0,15)
-        while num1 == num2 or male_used[num2] != 0:
+        while num1 == num2:
             num2 = random.randint(0,15)
         male_used[num1] = -1
         male_used[num2] = -1
@@ -98,6 +92,11 @@ class TocMachine(GraphMachine):
                 )
             )
         )
+    def do_times_count(self,event,index,times):
+        i = 0
+        male_used[index] = times
+        send_text_message(event.reply_token,male_twicher_name[index])
+        
     def on_enter_male2(self,event):
         num1 = random.randint(0,15)
         num2 = random.randint(0,15)
