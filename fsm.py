@@ -78,6 +78,39 @@ class TocMachine(GraphMachine):
     #     reply_token = event.reply_token
     #     send_text_message(reply_token, "您已進入男性選擇區 haha")
     
+    def on_enter_male_1(self,event,times):
+        num1 = random.randint(0,15)
+        num2 = random.randint(0,15)
+        while male_used[num1] != 0:
+            num1 = random.randint(0,15)
+        while num1 != num2 and male_used[num2] == 0:
+            num2 = random.randint(0,15)
+        male_used[num1] = male_used + 1
+        male_used[num2] = male_used[num2] + 1
+        s1 = male_twicher_name[num1]
+        s2 = male_twicher_name[num2]
+        line_bot_api.reply_message(
+            event.reply_token,[
+                TemplateSendMessage(
+                    alt_text = 'Button template',
+                    template = ButtonsTemplate(
+                        title = '選擇',
+                        text = '請選擇你最喜歡的實況主',
+                        actions = [
+                            MessageTemplateAction(
+                                label = s1,
+                                text = s1
+                            ),
+                            MessageTemplateAction(
+                                label = s2,
+                                text = s2
+                            )
+                        ]
+                    )
+                )
+            ]
+        )
+        
     def do_male_compete_1(self,event,times):
         num1 = random.randint(0,15)
         num2 = random.randint(0,15)
@@ -110,7 +143,7 @@ class TocMachine(GraphMachine):
                 )
             ]
         )
-        return "第一輪" + times
+        return "第一輪"
 
         def do_nothing(self,event):
             reply_token = event.reply_token
