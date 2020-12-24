@@ -41,7 +41,7 @@ machine = TocMachine(
 app = Flask(__name__, static_url_path="")
 #                       1     2      3      4     5      6     7      8     9         10      11      12    13       14     15    16
 male_twicher_name = ['6tan','餐哥','鳥屎','國棟','虧皮','館長','爆哥','Rex','KO0416','Toyz','NL(MK)', '老皮','史丹利','花輪','懶貓','UZRA']
-
+first_round_times = 0
 # get channel_secret and channel_access_token from your environment variable
 channel_secret = os.getenv("LINE_CHANNEL_SECRET", None)
 channel_access_token = os.getenv("LINE_CHANNEL_ACCESS_TOKEN", None)
@@ -117,7 +117,12 @@ def webhook_handler():
         elif machine.state == "choose":
             if event.message.text == "男性":
                 machine.to_male_1()
-                machine.do_male_compete(event)
+                first_round_times = first_round_times + 1
+                machine.do_male_compete_1(event,first_round_times)
+        elif machine.state == "to_male_1":
+            machine.do_nothing()
+
+
 
 
     return "OK"
