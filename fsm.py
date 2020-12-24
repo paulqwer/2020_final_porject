@@ -102,7 +102,7 @@ class TocMachine(GraphMachine):
                 index += 1
         num1 = random.randint(0,15)
         num2 = random.randint(0,15)
-        while male_used[num1] != 0 or male_used[num1] != -1:
+        while male_used[num1] != -1:
             num1 = random.randint(0,15)
         while num1 == num2  or male_used[num2] != -1:
             num2 = random.randint(0,15)
