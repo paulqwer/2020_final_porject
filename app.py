@@ -14,20 +14,8 @@ load_dotenv()
 
 
 machine = TocMachine(
-    states=["user", "state1", "state2", "in", "choose","male","mcomp1","mcomp2"],
+    states=[ "in", "choose","male","mcomp1","mcomp2"],
     transitions=[
-        {
-            "trigger": "advance",
-            "source": "user",
-            "dest": "state1",
-            "conditions": "is_going_to_state1",
-        },
-        {
-            "trigger": "advance",
-            "source": "user",
-            "dest": "state2",
-            "conditions": "is_going_to_state2",
-        },
         { "trigger" : "go_back_intro", "source" : "choose", "dest" : "in"},
         { "trigger" : "to_choose", "source" : "in", "dest" : "choose"},
         { "trigger" : "to_male", "source" : "choose", "dest" : "male"},
@@ -120,18 +108,18 @@ def webhook_handler():
             if event.message.text == "男性":
                 machine.to_male(event)
         if machine.state == "male":
-           first_round_times = first_round_times + 1
-           while first_round_times != 8:
-                index = 0   
-                while index < 16:
-                    if event.message.text == male_twicher_name[index]:
-                        machine.do_times_count(event,male_twicher_name[index])
-                        break
-                    else :
-                        index = index + 1
-                machine.do_first_round_compete(event,first_round_times)
-                first_round_times += 1
-
+            if isinstance(event,MessageEvent):
+                if first_round_times < 8:
+                    first_round_times += 1
+                    index = 0
+                    while index < 16:
+                        if male_twicher_name[index] == event.message.text:
+                            machine.do_times_count(event,index,first_round_times)
+                            break
+                        else :
+                            index += 1
+                    if first_round_times != 8:
+                        machine.do_f_compete(event,first_round_times+1)
         # if machine.state == "mcomp1":
         #     index = 0   
         #     while index < 16:

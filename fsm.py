@@ -17,21 +17,6 @@ class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
 
-    def is_going_to_state1(self, event):
-        text = event.message.text
-        return text.lower() == "go to state1"
-
-    def is_going_to_state2(self, event):
-        text = event.message.text
-        return text.lower() == "go to state2"
-
-    def on_enter_state1(self, event):
-        print("I'm entering state1")
-
-        reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger state1")
-        self.go_back()
-
     def on_exit_state1(self):
         print("Leaving state1")
 
@@ -85,6 +70,8 @@ class TocMachine(GraphMachine):
             num1 = random.randint(0,15)
         while num1 == num2 or male_used[num2] != 0:
             num2 = random.randint(0,15)
+        male_used[num1] = -1
+        male_used[num2] = -1
         s1 = male_twicher_name[num1]
         s2 = male_twicher_name[num2]
         line_bot_api.reply_message(
@@ -107,20 +94,41 @@ class TocMachine(GraphMachine):
                 )
             )
         )
-    def do_first_round_compete(self,event,times):
-        send_text_message(event.reply_token,'hohohoh')
-
-
-    def do_times_count(self,event,name):
-        index = 0
-        while index < 16:
-            if male_twicher_name[index] == name:
-                male_used[index] += 1
-                break
-            else :
-                index += 1
-        send_text_message(event.reply_token,male_used[index])
-
+   
+    def do_f_compete(self,event,times):
+        num1 = random.randint(0,15)
+        num2 = random.randint(0,15)
+        while male_used[num1] != times:
+            num1 = random.randint(0,15)
+        while num1 == num2 or male_used[num2] != times:
+            num2 = random.randint(0,15)
+        male_used[num1] = -1
+        male_used[num2] = -1
+        s1 = male_twicher_name[num1]
+        s2 = male_twicher_name[num2]
+        line_bot_api.reply_message(
+            event.reply_token,
+            TemplateSendMessage(
+                alt_text = 'Button template',
+                template = ButtonsTemplate(
+                    title = '選擇',
+                    text = '請選擇你最喜歡的實況主',
+                    actions = [
+                        MessageTemplateAction(
+                            label = s1,
+                            text = s1
+                        ),
+                        MessageTemplateAction(
+                            label = s2,
+                            text = s2
+                        )
+                    ]
+                )
+            )
+        )
+    def do_times_count(self,event,index,times):
+        i = 0
+        male_used[index] = times
     # def on_enter_comop1(self,event):
     #     num1 = random.randint(0,15)
     #     num2 = random.randint(0,15)
