@@ -92,14 +92,14 @@ class TocMachine(GraphMachine):
                 )
             )
         )
-    def do_male2_comp(self,event):
-        # index = 0
-        # while index < 16:
-        #     if male_twicher_name[index] == te:
-        #         male_used[index] = 1
-        #         break
-        #     else :
-        #         index += 1
+    def do_male2_comp(self,event,t):
+        index = 0
+        while index < 16:
+            if male_twicher_name[index] == t:
+                male_used[index] = 1
+                break
+            else :
+                index += 1
         num1 = random.randint(0,15)
         num2 = random.randint(0,15)
         # while male_used[num1] != 0 or male_used[num1] != -1:
