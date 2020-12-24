@@ -117,7 +117,6 @@ def webhook_handler():
         elif machine.state == "choose":
             if event.message.text == "男性":
                 machine.to_male_1()
-                first_round_times = first_round_times + 1
                 machine.do_male_compete_1(event,first_round_times)
         elif machine.state == "to_male_1":
             machine.do_nothing()
