@@ -31,7 +31,7 @@ machine = TocMachine(
 
 app = Flask(__name__, static_url_path="")
 #                       1     2      3      4     5      6     7      8     9         10      11      12    13       14     15    16
-male_twicher_name = ['6tan','餐哥','鳥屎','國棟','虧皮','館長','爆哥','Rex','KO0416','Toyz','NL(MK)', '老皮','史丹利','花輪','懶貓','UZRA']
+male_twicher_name = ['6tan','餐哥','鳥屎','國棟','虧皮','館長','爆哥','Rex','KO','Toyz','NL(MK)', '老皮','史丹利','花輪','懶貓','UZRA']
 first_round_times = 0
 # get channel_secret and channel_access_token from your environment variable
 channel_secret = os.getenv("LINE_CHANNEL_SECRET", None)
@@ -109,14 +109,8 @@ def webhook_handler():
             if event.message.text == "男性":
                 machine.to_male(event)
         if machine.state == "male":
-            if isinstance(event,MessageEvent):
-                index = 0
-                while index < 16:
-                    if event.message.text == male_twicher_name[index]:
-                        machine.do_nothing(event)
-                        break
-                    else :
-                        index += 1
+            if  event.message.text == "6tan" or event.message.text == "餐哥" or event.message.text == "鳥屎" or event.message.text == "國棟" or event.message.text == "虧皮" or event.message.text == "館長" or event.message.text == "爆哥" or event.message.text == "Rex" or event.message.text == "KO" or event.message.text == "Toyz" or event.message.text == "NL(MK)" or event.message.text == "老皮" or event.message.text == "史丹利" or event.message.text =="花輪" or event.message.text == "懶貓" or event.message.text == "UZRA":
+                machine.do_nothing(event)
                 # index = 0
                 # while index < 16:
                 #     if male_twicher_name[index] == event.message.text:

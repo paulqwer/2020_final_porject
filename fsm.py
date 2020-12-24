@@ -9,8 +9,8 @@ from linebot import LineBotApi, WebhookParser
 channel_access_token = os.getenv("LINE_CHANNEL_ACCESS_TOKEN", None)
 line_bot_api = LineBotApi(channel_access_token)
 
-#                       1     2      3      4     5      6     7      8     9         10      11      12    13       14     15    16
-male_twicher_name = ['6tan','餐哥','鳥屎','國棟','虧皮','館長','爆哥','Rex','KO0416','Toyz','NL(MK)', '老皮','史丹利','花輪','懶貓','UZRA']
+#                       1     2      3      4     5      6     7      8     9     10      11      12    13       14     15    16
+male_twicher_name = ['6tan','餐哥','鳥屎','國棟','虧皮','館長','爆哥','Rex','KO','Toyz','NL(MK)', '老皮','史丹利','花輪','懶貓','UZRA']
 male_used = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
 class TocMachine(GraphMachine):
@@ -131,6 +131,9 @@ class TocMachine(GraphMachine):
         male_used[index] = times
         send_text_message(event.reply_token,male_twicher_name[index])
 
+    def do_nothing(self,event):
+        reply_token = event.reply_token
+        send_text_message(reply_token, "nothing")
     # def on_enter_comop1(self,event):
     #     num1 = random.randint(0,15)
     #     num2 = random.randint(0,15)
@@ -172,6 +175,4 @@ class TocMachine(GraphMachine):
     #     )
     #     return "第一輪"
 
-        def do_nothing(self,event):
-            reply_token = event.reply_token
-            send_text_message(reply_token, "nothing")
+       
