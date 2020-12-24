@@ -85,7 +85,7 @@ class TocMachine(GraphMachine):
             num1 = random.randint(0,15)
         while num1 != num2 and male_used[num2] == 0:
             num2 = random.randint(0,15)
-        male_used[num1] = male_used + 1
+        male_used[num1] = male_used[num1] + 1
         male_used[num2] = male_used[num2] + 1
         s1 = male_twicher_name[num1]
         s2 = male_twicher_name[num2]
