@@ -159,37 +159,6 @@ class TocMachine(GraphMachine):
                 )
             )
         )
-    def do_f_compete(self,event,times):
-        num1 = random.randint(0,15)
-        num2 = random.randint(0,15)
-        while male_used[num1] != times or male_used[num1] != -1:
-            num1 = random.randint(0,15)
-        while num1 == num2 or male_used[num2] != times or male_used[num2] != -1:
-            num2 = random.randint(0,15)
-        male_used[num1] = -1
-        male_used[num2] = -1
-        s1 = male_twicher_name[num1]
-        s2 = male_twicher_name[num2]
-        line_bot_api.reply_message(
-            event.reply_token,
-            TemplateSendMessage(
-                alt_text = 'Button template',
-                template = ButtonsTemplate(
-                    title = '選擇',
-                    text = '請選擇你最喜歡的實況主',
-                    actions = [
-                        MessageTemplateAction(
-                            label = s1,
-                            text = s1
-                        ),
-                        MessageTemplateAction(
-                            label = s2,
-                            text = s2
-                        )
-                    ]
-                )
-            )
-        )
 
     def do_nothing(self,event):
         reply_token = event.reply_token
