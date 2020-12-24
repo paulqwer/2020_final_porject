@@ -78,7 +78,7 @@ class TocMachine(GraphMachine):
     #     reply_token = event.reply_token
     #     send_text_message(reply_token, "您已進入男性選擇區 haha")
     
-    def on_enter_male_11(self,event):
+    def on_enter_male11(self,event):
         reply_token = event.reply_token
         send_text_message(reply_token, "nothing")
         # num1 = random.randint(0,15)

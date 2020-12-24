@@ -30,7 +30,7 @@ machine = TocMachine(
         },
         { "trigger" : "go_back_intro", "source" : "choose", "dest" : "in"},
         { "trigger" : "to_choose", "source" : "in", "dest" : "choose"},
-        { "trigger" : "to_male_11", "source" : "choose", "dest" : "male_11"},
+        { "trigger" : "to_male11", "source" : "choose", "dest" : "male11"},
         {"trigger": "go_back", "source": ["state1", "state2"], "dest": "user"},
     ],
     initial="in",
@@ -116,7 +116,7 @@ def webhook_handler():
                 machine.to_choose(event)
         if machine.state == "choose":
             if event.message.text == "男性":
-                machine.to_male_11(event)
+                machine.to_male11(event)
         if machine.state == "to_male_1":
             if event.message.text == "你好":
                 machine.do_nothing(event)
