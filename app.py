@@ -14,7 +14,7 @@ load_dotenv()
 
 
 machine = TocMachine(
-    states=["user", "state1", "state2", "in", "choose","male","comp1"],
+    states=["user", "state1", "state2", "in", "choose","male","mcomp1","mcomp2"],
     transitions=[
         {
             "trigger": "advance",
@@ -31,7 +31,8 @@ machine = TocMachine(
         { "trigger" : "go_back_intro", "source" : "choose", "dest" : "in"},
         { "trigger" : "to_choose", "source" : "in", "dest" : "choose"},
         { "trigger" : "to_male", "source" : "choose", "dest" : "male"},
-        { "trigger" : "to_comp1", "source":"male", "dest" : "comp1"},
+        { "trigger" : "to_mcomp1", "source":"male", "dest" : "mcomp1"},
+        { "trigger" : "to_mcomp2", "source":"mcomp1","dest" : "mcomp2"},
         {"trigger": "go_back", "source": ["state1", "state2"], "dest": "user"},
     ],
     initial="in",
@@ -117,16 +118,29 @@ def webhook_handler():
                 machine.to_choose(event)
         if machine.state == "choose":
             if event.message.text == "男性":
-                machine.to_male(event)
+                machine.to_male(event,0)
         if machine.state == "male":
-            index = 0
+           first_round_times = first_round_times + 1
+           while first_round_times != 8:
+                index = 0   
+                while index < 16:
+                    if event.message.text == male_twicher_name[index]:
+                        machine.do_times_count(event,male_twicher_name[index])
+                        break
+                    else :
+                        index = index + 1
+                machine.do_first_round_compete(event,first_round_times)
+                first_round_times += 1
+
+        if machine.state == "mcomp1":
+            index = 0   
             while index < 16:
                 if event.message.text == male_twicher_name[index]:
-                    machine.to_comp1(event)
+                    machine.to_mcomp2(event)
                     break
                 else :
-                    index = index + 1   
-
+                    index = index + 1
+            
         
 
 
