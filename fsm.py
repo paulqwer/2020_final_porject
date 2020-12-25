@@ -369,7 +369,7 @@ class TocMachine(GraphMachine):
         female_uese[num1] = -1
         female_uese[num2] = -1
         s1 = female_twitcher_name[num1]
-        s2 = female_twitcher_name[num2]
+        s2 = female_twitcher_name[num2] 
         line_bot_api.reply_message(
             event.reply_token,
             TemplateSendMessage(
