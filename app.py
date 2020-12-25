@@ -14,18 +14,18 @@ load_dotenv()
 
 
 machine = TocMachine(
-    states=[ "in", "choose","male","male2","male3","male4","male5","male6","male7","male8","mcomp1","mcomp2"],
+    states=[ "in", "choose","male","male2","male3","male4","female","female2","female3","female4","mcomp1","mcomp2"],
     transitions=[
-        { "trigger" : "go_back_intro", "source" : ["choose","male", "male2","male3","male4"], "dest" : "in"},
+        { "trigger" : "go_back_intro", "source" : ["choose","male", "male2","male3","male4","female","female2","female3","female4"], "dest" : "in"},
         { "trigger" : "to_choose", "source" : "in", "dest" : "choose"},
         { "trigger" : "to_male", "source" : "choose", "dest" : "male"},
         { "trigger" : "to_male2","source":"male","dest":"male2"},
         { "trigger" : "to_male3","source":"male2","dest":"male3"},
         { "trigger" : "to_male4","source":"male3","dest":"male4"},
-        { "trigger" : "to_male5","source":"male4","dest":"male5"},
-        { "trigger" : "to_male6","source":"male5","dest":"male6"},
-        { "trigger" : "to_male7","source":"male6","dest":"male7"},
-        { "trigger" : "to_male8","source":"male7","dest":"male8"},
+        { "trigger" : "to_female","source":"choose","dest":"female"},
+        { "trigger" : "to_female2","source":"female","dest":"female2"},
+        { "trigger" : "to_female3","source":"female2","dest":"female3"},
+        { "trigger" : "to_female4","source":"female3","dest":"female4"},
         { "trigger" : "to_mcomp1", "source":"male", "dest" : "mcomp1"},
         { "trigger" : "to_mcomp2", "source":"mcomp1","dest" : "mcomp2"},
         {"trigger": "go_back", "source": ["state1", "state2"], "dest": "user"},
@@ -43,6 +43,12 @@ f_1_times = 0
 f_2_times = 0
 f_3_times = 0
 f_4_times = 0
+
+ff_1_times = 0
+ff_2_times = 0
+ff_3_times = 0
+ff_4_times = 0
+
 # get channel_secret and channel_access_token from your environment variable
 channel_secret = os.getenv("LINE_CHANNEL_SECRET", None)
 channel_access_token = os.getenv("LINE_CHANNEL_ACCESS_TOKEN", None)
@@ -98,6 +104,7 @@ def webhook_handler():
         abort(400)
 
     global f_1_times,f_2_times,f_3_times,f_4_times
+    global ff_1_times,ff_2_times,ff_3_times,ff_4_times
     # if event is MessageEvent and message is TextMessage, then echo text
     for event in events:
         if not isinstance(event, MessageEvent):
@@ -121,6 +128,8 @@ def webhook_handler():
         if machine.state == "choose":
             if event.message.text == "男性":
                 machine.to_male(event)
+            elif event.message.text == "女性":
+                machine.to_female(event)
         if machine.state == "male":     #t = 1
             if  event.message.text == "6tan" or event.message.text == "餐哥" or event.message.text == "鳥屎" or event.message.text == "國棟" or event.message.text == "虧皮" or event.message.text == "館長" or event.message.text == "爆哥" or event.message.text == "Rex" or event.message.text == "KO" or event.message.text == "Toyz" or event.message.text == "NL(MK)" or event.message.text == "老皮" or event.message.text == "史丹利" or event.message.text =="花輪" or event.message.text == "懶貓" or event.message.text == "UZRA":
                 te = event.message.text
@@ -160,6 +169,17 @@ def webhook_handler():
                 f_4_times += 1
                 if f_4_times == 1:
                     machine.show_final_result(event,t4)
+        if machine.state == "female":
+            if event.message.text == "Mita" or event.message.text == "小熊" or event.message.text == "湘湘" or event.message.text == "凱琪" or event.message.text == "愷蒂喵" or event.message.text == "妮妮" or event.message.text == "企鵝妹" or event.message.text == "ViVi" or event.message.text == "蛋捲" or event.message.text == "優格" or event.message.text == "小雲寶寶" or event.message.text == "諾曼" or event.message.text == "妮婭" or event.message.text =="劉萱" or event.message.text == "阿樂" or event.message.text == "天菜娘娘":
+                ft1 = event.message.text
+                ff_1_times += 1
+                fx1 = ff_1_times
+                if ff_1_times == 8:
+                    machine.fdo_something(event,ft1)
+                    machine.to_female2(event)
+                else :
+                    machine.fdo_female_comp(event,ft1,fx1)
+        
 
         # if machine.state == "male2":    #t = 2
         #     if  event.message.text == "6tan" or event.message.text == "餐哥" or event.message.text == "鳥屎" or event.message.text == "國棟" or event.message.text == "虧皮" or event.message.text == "館長" or event.message.text == "爆哥" or event.message.text == "Rex" or event.message.text == "KO" or event.message.text == "Toyz" or event.message.text == "NL(MK)" or event.message.text == "老皮" or event.message.text == "史丹利" or event.message.text =="花輪" or event.message.text == "懶貓" or event.message.text == "UZRA":
