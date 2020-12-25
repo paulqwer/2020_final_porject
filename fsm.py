@@ -181,12 +181,13 @@ class TocMachine(GraphMachine):
         male_used[num2] = -1
         s1 = male_twicher_name[num1]
         s2 = male_twicher_name[num2]
+        temp = x2 + 1 
         line_bot_api.reply_message(
             event.reply_token,
             TemplateSendMessage(
                 alt_text = 'Button template',
                 template = ButtonsTemplate(
-                    title = str(x2) + "/4選擇",
+                    title = str(temp) + "/4選擇",
                     text = '請選擇你最喜歡的實況主',
                     actions = [
                         MessageTemplateAction(
