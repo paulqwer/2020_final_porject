@@ -103,8 +103,7 @@ def webhook_handler():
     except InvalidSignatureError:
         abort(400)
 
-    global f_1_times,f_2_times,f_3_times,f_4_times
-    global ff_1_times,ff_2_times,ff_3_times,ff_4_times
+    global f_1_times,f_2_times,f_3_times,f_4_times,ff_1_times,ff_2_times,ff_3_times,ff_4_times
     # if event is MessageEvent and message is TextMessage, then echo text
     for event in events:
         if not isinstance(event, MessageEvent):
