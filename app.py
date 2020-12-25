@@ -95,7 +95,7 @@ def webhook_handler():
         events = parser.parse(body, signature)
     except InvalidSignatureError:
         abort(400)
-
+    global f_1_times
     # if event is MessageEvent and message is TextMessage, then echo text
     for event in events:
         if not isinstance(event, MessageEvent):
@@ -106,7 +106,6 @@ def webhook_handler():
             continue
         print(f"\nFSM STATE: {machine.state}")
         print(f"REQUEST BODY: \n{body}")
-        global f_1_times
         if event.message.text == "結束":
             machine.go_back_intro(event)
         if machine.state == "in":
@@ -133,7 +132,7 @@ def webhook_handler():
                 tt = event.message.text 
                 f_1_times += 1
                 x2 = f_1_times
-                if f_1_times == 4:
+                if f_1_times == 5:
                     machine.do_nothing(event)
                 else :
                     machine.do_male2_comp(event,tt,x2)
