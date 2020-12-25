@@ -164,13 +164,13 @@ class TocMachine(GraphMachine):
     def do_male2_comp(self,event,tt,x2):
         # reply_token = event.reply_token
         # send_text_message(reply_token, x2)
-        index = 0
-        while index < 16:
-            if male_twicher_name[index] == tt:
-                male_used[index] = 3
+        ind = 0
+        while ind < 16:
+            if male_twicher_name[ind] == tt and male_used[ind] == -1:
+                male_used[ind] = 3
                 break
             else :
-                index += 1
+                ind += 1
         num1 = random.randint(0,15)
         num2 = random.randint(0,15)
         while male_used[num1] == -1 or male_used[num1] == 3:
