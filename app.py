@@ -187,10 +187,10 @@ def webhook_handler():
                 ff_2_times += 1
                 xx = ff_2_times
                 if ff_2_times == 4:
-                    machine.fdo_something_ver2(event,tt)
+                    machine.fdo_something_ver2(event,ft2)
                     machine.to_female3(event)
                 else :
-                    machine.fdo_female_comp2(event,tt,xx)
+                    machine.fdo_female_comp2(event,ft2,xx)
         elif machine.state == "female3":
             if event.message.text == "Mita" or event.message.text == "小熊" or event.message.text == "湘湘" or event.message.text == "凱琪" or event.message.text == "愷蒂喵" or event.message.text == "妮妮" or event.message.text == "企鵝妹" or event.message.text == "ViVi" or event.message.text == "蛋捲" or event.message.text == "優格" or event.message.text == "小雲寶寶" or event.message.text == "諾曼" or event.message.text == "妮婭" or event.message.text =="劉萱" or event.message.text == "阿樂" or event.message.text == "天菜娘娘":
                 machine.do_nothing(event)
