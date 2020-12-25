@@ -40,7 +40,6 @@ app = Flask(__name__, static_url_path="")
 male_twicher_name = ['6tan','餐哥','鳥屎','國棟','虧皮','館長','爆哥','Rex','KO','Toyz','NL(MK)', '老皮','史丹利','花輪','懶貓','UZRA']
 f_1_times = 0
 
-f_2_times = 0
 
 
 # get channel_secret and channel_access_token from your environment variable
