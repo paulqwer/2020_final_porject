@@ -139,7 +139,7 @@ def webhook_handler():
                 elif f_1_times == 1:
                     f_1_times += 1
                 elif f_1_times == 2:
-                    f_1_times += 1
+                    pass
                 elif f_1_times == 3:
                     f_1_times += 1
                 else:
