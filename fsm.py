@@ -507,6 +507,7 @@ class TocMachine(GraphMachine):
         index = 0
         while index <16:
             male_used[index] = 0
+            female_uese[index] = 0
             index += 1
 
     def do_print(self,event):
