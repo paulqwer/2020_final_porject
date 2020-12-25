@@ -77,7 +77,7 @@ class TocMachine(GraphMachine):
             TemplateSendMessage(
                 alt_text = 'Button template',
                 template = ButtonsTemplate(
-                    title = '選擇',
+                    title = '1/8選擇',
                     text = '請選擇你最喜歡的實況主',
                     actions = [
                         MessageTemplateAction(
@@ -115,7 +115,7 @@ class TocMachine(GraphMachine):
             TemplateSendMessage(
                 alt_text = 'Button template',
                 template = ButtonsTemplate(
-                    title = str(x) + "/8選擇",
+                    title = str(x+1) + "/8選擇",
                     text = '請選擇你最喜歡的實況主',
                     actions = [
                         MessageTemplateAction(
