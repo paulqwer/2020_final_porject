@@ -122,7 +122,7 @@ def webhook_handler():
                 global f_1_times
                 f_1_times = f_1_times +1
                 if f_1_times == 8:
-                    machine.do_nothing(event)
+                    machine.to_male2(event)
                 else :
                     machine.do_male1_comp(event,te)
         # if machine.state == "male2":    #t = 2
