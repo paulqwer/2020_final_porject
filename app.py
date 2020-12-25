@@ -137,7 +137,7 @@ def webhook_handler():
                 tt = event.message.text 
                 f_2_times += 1
                 xx = f_2_times
-                if f_1_times == 4:
+                if f_2_times == 4:
                     machine.do_nothing(event)
                 else :
                     machine.do_male2_comp(event,tt,xx)
