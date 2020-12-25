@@ -338,3 +338,8 @@ class TocMachine(GraphMachine):
                 )
             )
         )
+    
+    def show_final_result(self,event,t4):
+        sss = "感謝您，使用此功能\n您最後的選擇是\n=== "+ t4 +" ==="
+        reply_token = event.reply_token
+        send_text_message(reply_token, sss)
