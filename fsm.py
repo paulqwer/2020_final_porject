@@ -92,7 +92,7 @@ class TocMachine(GraphMachine):
                 )
             )
         )
-    def do_male1_comp(self,event,te,f_1_times):
+    def do_male1_comp(self,event,te,x):
         index = 0
         while index < 16:
             if male_twicher_name[index] == te:
@@ -115,7 +115,7 @@ class TocMachine(GraphMachine):
             TemplateSendMessage(
                 alt_text = 'Button template',
                 template = ButtonsTemplate(
-                    title = f_1_times + '/8選擇',
+                    title = str(x) + "/8選擇",
                     text = '請選擇你最喜歡的實況主',
                     actions = [
                         MessageTemplateAction(
