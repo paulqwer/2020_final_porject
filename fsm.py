@@ -161,7 +161,7 @@ class TocMachine(GraphMachine):
                 )
             )
         )
-    def do_male2_comp(self,event,tt,x2):
+    def do_male2_comp(self,event,tt,xx):
         # reply_token = event.reply_token
         # send_text_message(reply_token, x2)
         ind = 0
@@ -186,7 +186,7 @@ class TocMachine(GraphMachine):
             TemplateSendMessage(
                 alt_text = 'Button template',
                 template = ButtonsTemplate(
-                    title = str(x2) + "/4選擇",
+                    title = str(xx+1) + "/4選擇",
                     text = '請選擇你最喜歡的實況主',
                     actions = [
                         MessageTemplateAction(

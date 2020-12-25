@@ -40,6 +40,7 @@ app = Flask(__name__, static_url_path="")
 male_twicher_name = ['6tan','餐哥','鳥屎','國棟','虧皮','館長','爆哥','Rex','KO','Toyz','NL(MK)', '老皮','史丹利','花輪','懶貓','UZRA']
 
 f_1_times = 0
+f_2_times = 0
 
 # get channel_secret and channel_access_token from your environment variable
 channel_secret = os.getenv("LINE_CHANNEL_SECRET", None)
@@ -95,7 +96,7 @@ def webhook_handler():
     except InvalidSignatureError:
         abort(400)
 
-    global f_1_times
+    global f_1_times,f_2_times
     # if event is MessageEvent and message is TextMessage, then echo text
     for event in events:
         if not isinstance(event, MessageEvent):
@@ -134,20 +135,12 @@ def webhook_handler():
             if  event.message.text == "6tan" or event.message.text == "餐哥" or event.message.text == "鳥屎" or event.message.text == "國棟" or event.message.text == "虧皮" or event.message.text == "館長" or event.message.text == "爆哥" or event.message.text == "Rex" or event.message.text == "KO" or event.message.text == "Toyz" or event.message.text == "NL(MK)" or event.message.text == "老皮" or event.message.text == "史丹利" or event.message.text =="花輪" or event.message.text == "懶貓" or event.message.text == "UZRA":
                 # machine.do_print(event)
                 tt = event.message.text 
-                if f_1_times == 0:
-                    f_1_times += 1
-                elif f_1_times == 1:
-                    f_1_times += 1
-                elif f_1_times == 2:
-                    f_1_times += 1
-                elif f_1_times == 3:
-                    f_1_times += 1
-                else:
-                    pass
+                f_2_times += 1
+                xx = f_2_times
                 if f_1_times == 4:
                     machine.do_nothing(event)
                 else :
-                    machine.do_male2_comp(event,tt,f_1_times)
+                    machine.do_male2_comp(event,tt,xx)
 
         # if machine.state == "male2":    #t = 2
         #     if  event.message.text == "6tan" or event.message.text == "餐哥" or event.message.text == "鳥屎" or event.message.text == "國棟" or event.message.text == "虧皮" or event.message.text == "館長" or event.message.text == "爆哥" or event.message.text == "Rex" or event.message.text == "KO" or event.message.text == "Toyz" or event.message.text == "NL(MK)" or event.message.text == "老皮" or event.message.text == "史丹利" or event.message.text =="花輪" or event.message.text == "懶貓" or event.message.text == "UZRA":
