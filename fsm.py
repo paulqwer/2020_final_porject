@@ -222,15 +222,39 @@ class TocMachine(GraphMachine):
                 break
             else :
                 ind += 1
-    
+    def do_something_ver3(self,event,t4):
+        ind = 0
+        while ind < 16:
+            if male_twicher_name[ind] == t4:
+                male_used[ind] = 4
+                break
+            else :
+                ind += 1
+
     def fdo_something(self,event,tx):
         ind = 0
         while ind < 16:
             if female_twitcher_name[ind] == tx:
-                female_used[ind] = 2
+                female_uese[ind] = 2
                 break
             else :
                 ind += 1
+    def fdo_something_ver2(self,event,tx):
+        ind = 0
+        while ind < 16:
+            if female_twitcher_name[ind] == tx:
+                female_uese[ind] = 3
+                break
+            else :
+                ind += 1
+    def fdo_something_ver3(self,event,t3):
+        ind = 0
+        while ind < 16:
+            if female_twitcher_name[ind] == t3:
+                female_uese[ind] = 4
+                break
+            else :
+                ind += 1   
     def fdo_female_comp(self,event,te,x):
         index = 0
         while index < 16:
@@ -269,11 +293,55 @@ class TocMachine(GraphMachine):
                 )
             )
         )
+    def fdo_female_comp2(self,event,tt,xx):
+        # reply_token = event.reply_token
+        # send_text_message(reply_token, x2)
+        ind = 0
+        while ind < 16:
+            if female_twitcher_name[ind] == tt:
+                female_uese[ind] = 3
+                break
+            else :
+                ind += 1
+        num1 = random.randint(0,15)
+        num2 = random.randint(0,15)
+        while female_uese[num1] == -1 or female_uese[num1] == 3:
+            num1 = random.randint(0,15)
+        while num1 == num2  or female_uese[num2] == -1 or female_uese[num2] == 3:
+            num2 = random.randint(0,15)
+        female_uese[num1] = -1
+        female_uese[num2] = -1
+        s1 = female_twitcher_name[num1]
+        s2 = female_twitcher_name[num2]
+        line_bot_api.reply_message(
+            event.reply_token,
+            TemplateSendMessage(
+                alt_text = 'Button template',
+                template = ButtonsTemplate(
+                    title = str(xx+1) + "/4選擇",
+                    text = '請選擇你最喜歡的實況主',
+                    actions = [
+                        MessageTemplateAction(
+                            label = s1,
+                            text = s1
+                        ),
+                        MessageTemplateAction(
+                            label = s2,
+                            text = s2
+                        )
+                    ]
+                )
+            )
+        )
+       
+
+
     def do_initia(self,event):
         index = 0
         while index <16:
             male_used[index] = 0
             index += 1
+
     def do_print(self,event):
         index = 0
         s = ""

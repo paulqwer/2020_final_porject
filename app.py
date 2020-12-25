@@ -158,7 +158,7 @@ def webhook_handler():
                 f_3_times += 1
                 x3 = f_3_times
                 if f_3_times == 2:
-                    machine.do_something_ver2(event,t3)
+                    machine.do_something_ver3(event,t3)
                     # machine.do_nothing(event)
                     machine.to_male4(event)
                 else :
@@ -180,8 +180,20 @@ def webhook_handler():
                     machine.to_female2(event)
                 else :
                     machine.fdo_female_comp(event,ft1,fx1)
-        
-
+        elif machine.state == "female2":
+            if event.message.text == "Mita" or event.message.text == "小熊" or event.message.text == "湘湘" or event.message.text == "凱琪" or event.message.text == "愷蒂喵" or event.message.text == "妮妮" or event.message.text == "企鵝妹" or event.message.text == "ViVi" or event.message.text == "蛋捲" or event.message.text == "優格" or event.message.text == "小雲寶寶" or event.message.text == "諾曼" or event.message.text == "妮婭" or event.message.text =="劉萱" or event.message.text == "阿樂" or event.message.text == "天菜娘娘":
+                # machine.do_print(event)
+                ft2 = event.message.text 
+                ff_2_times += 1
+                xx = ff_2_times
+                if ff_2_times == 4:
+                    machine.fdo_something_ver2(event,tt)
+                    machine.to_female3(event)
+                else :
+                    machine.fdo_female_comp2(event,tt,xx)
+        elif machine.state == "female3":
+            if event.message.text == "Mita" or event.message.text == "小熊" or event.message.text == "湘湘" or event.message.text == "凱琪" or event.message.text == "愷蒂喵" or event.message.text == "妮妮" or event.message.text == "企鵝妹" or event.message.text == "ViVi" or event.message.text == "蛋捲" or event.message.text == "優格" or event.message.text == "小雲寶寶" or event.message.text == "諾曼" or event.message.text == "妮婭" or event.message.text =="劉萱" or event.message.text == "阿樂" or event.message.text == "天菜娘娘":
+                machine.do_nothing(event)
         # if machine.state == "male2":    #t = 2
         #     if  event.message.text == "6tan" or event.message.text == "餐哥" or event.message.text == "鳥屎" or event.message.text == "國棟" or event.message.text == "虧皮" or event.message.text == "館長" or event.message.text == "爆哥" or event.message.text == "Rex" or event.message.text == "KO" or event.message.text == "Toyz" or event.message.text == "NL(MK)" or event.message.text == "老皮" or event.message.text == "史丹利" or event.message.text =="花輪" or event.message.text == "懶貓" or event.message.text == "UZRA":
         #         index = 0
