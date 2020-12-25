@@ -186,7 +186,7 @@ class TocMachine(GraphMachine):
             TemplateSendMessage(
                 alt_text = 'Button template',
                 template = ButtonsTemplate(
-                    title = str(x2) + "/4選擇",
+                    title = str(x2+1) + "/4選擇",
                     text = '請選擇你最喜歡的實況主',
                     actions = [
                         MessageTemplateAction(
@@ -207,7 +207,7 @@ class TocMachine(GraphMachine):
     def do_something(self,event,tex):
         ind = 0
         while ind < 16:
-            if male_twicher_name[ind] == tex and male_used[ind] == -1:
+            if male_twicher_name[ind] == tex:
                 male_used[ind] = 3
                 break
             else :
