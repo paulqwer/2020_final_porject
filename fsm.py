@@ -209,7 +209,7 @@ class TocMachine(GraphMachine):
         ind = 0
         while ind < 16:
             if male_twicher_name[ind] == tex:
-                male_used[ind] = 3
+                male_used[ind] = 2
                 break
             else :
                 ind += 1
