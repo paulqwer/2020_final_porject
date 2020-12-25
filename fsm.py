@@ -186,7 +186,7 @@ class TocMachine(GraphMachine):
             TemplateSendMessage(
                 alt_text = 'Button template',
                 template = ButtonsTemplate(
-                    title = str(x2+1) + "/4選擇",
+                    title = str(x2) + "/4選擇",
                     text = '請選擇你最喜歡的實況主',
                     actions = [
                         MessageTemplateAction(
@@ -204,6 +204,14 @@ class TocMachine(GraphMachine):
     def do_nothing(self,event):
         reply_token = event.reply_token
         send_text_message(reply_token, "nothing")
+    def do_something(self,event,tex):
+        ind = 0
+        while ind < 16:
+            if male_twicher_name[ind] == tex and male_used[ind] == -1:
+                male_used[ind] = 3
+                break
+            else :
+                ind += 1
     # def on_enter_comop1(self,event):
     #     num1 = random.randint(0,15)
     #     num2 = random.randint(0,15)
