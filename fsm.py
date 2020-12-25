@@ -535,6 +535,7 @@ class TocMachine(GraphMachine):
         )
 
     def do_initia(self,event):
+        global male_used,female_uese
         index = 0
         while index <16:
             male_used[index] = 0
@@ -546,6 +547,14 @@ class TocMachine(GraphMachine):
         s = ""
         while index < 16:
             s += str(male_used[index]) + " "
+            index += 1
+        reply_token = event.reply_token
+        send_text_message(reply_token,s)
+    def fdo_print(self,event):
+        index = 0
+        s = ""
+        while index < 16:
+            s += str(female_uese[index]) + " "
             index += 1
         reply_token = event.reply_token
         send_text_message(reply_token,s)
