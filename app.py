@@ -133,7 +133,7 @@ def webhook_handler():
                 global f_2_times
                 f_2_times = f_2_times + 1 
                 x2 = f_2_times
-                if f_2_times == 4:
+                if f_2_times == 5:
                     machine.do_nothing(event)
                 else :
                     machine.do_male2_comp(event,tt,x2)
