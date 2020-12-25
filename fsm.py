@@ -467,7 +467,7 @@ class TocMachine(GraphMachine):
         index = 0
         s = ""
         while index < 16:
-            s += str(male_used[index]) + " "
+            s += str(female_uese[index]) + " "
             index += 1
         reply_token = event.reply_token
         send_text_message(reply_token,s)
