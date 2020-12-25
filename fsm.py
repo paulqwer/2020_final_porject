@@ -137,8 +137,8 @@ class TocMachine(GraphMachine):
             num1 = random.randint(0,15)
         while num1 == num2 or male_used[num2] == -1:
             num2 = random.randint(0,15)
-        male_used[num1] = 2
-        male_used[num2] = 2
+        male_used[num1] = -1
+        male_used[num2] = -1
         s1 = male_twicher_name[num1]
         s2 = male_twicher_name[num2]
         line_bot_api.reply_message(
@@ -166,7 +166,7 @@ class TocMachine(GraphMachine):
         # send_text_message(reply_token, x2)
         ind = 0
         while ind < 16:
-            if male_twicher_name[ind] == tt and male_used[ind] == -1:
+            if male_twicher_name[ind] == tt:
                 male_used[ind] = 3
                 break
             else :
@@ -181,13 +181,12 @@ class TocMachine(GraphMachine):
         male_used[num2] = -1
         s1 = male_twicher_name[num1]
         s2 = male_twicher_name[num2]
-        temp = x2
         line_bot_api.reply_message(
             event.reply_token,
             TemplateSendMessage(
                 alt_text = 'Button template',
                 template = ButtonsTemplate(
-                    title = str(temp) + "/4選擇",
+                    title = str(x) + "/4選擇",
                     text = '請選擇你最喜歡的實況主',
                     actions = [
                         MessageTemplateAction(
@@ -218,12 +217,13 @@ class TocMachine(GraphMachine):
         while index <16:
             male_used[index] = 0
             index += 1
-    def do_print(self,event):
+    def do_print(self,event,f_1_times):
         index = 0
         s = ""
         while index < 16:
             s += str(male_used[index]) + " "
             index += 1
+        s += str(f_1_times)
         reply_token = event.reply_token
         send_text_message(reply_token,s)
         

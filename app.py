@@ -131,7 +131,7 @@ def webhook_handler():
                     machine.do_male1_comp(event,te,x)
         if machine.state == "male2": 
             if  event.message.text == "6tan" or event.message.text == "餐哥" or event.message.text == "鳥屎" or event.message.text == "國棟" or event.message.text == "虧皮" or event.message.text == "館長" or event.message.text == "爆哥" or event.message.text == "Rex" or event.message.text == "KO" or event.message.text == "Toyz" or event.message.text == "NL(MK)" or event.message.text == "老皮" or event.message.text == "史丹利" or event.message.text =="花輪" or event.message.text == "懶貓" or event.message.text == "UZRA":
-                machine.do_print(event)
+                machine.do_print(event,f_1_times)
                 # tt = event.message.text 
                 # f_1_times += 1
                 # x2 = f_1_times
