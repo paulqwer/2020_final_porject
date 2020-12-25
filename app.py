@@ -125,7 +125,7 @@ def webhook_handler():
                 f_1_times = f_1_times +1
                 x = f_1_times
                 if f_1_times == 8:
-                    f_1_times = 1
+                    f_1_times = 0
                     machine.do_something(event,te)
                     machine.to_male2(event)
                 else :
@@ -139,7 +139,7 @@ def webhook_handler():
                 elif f_1_times == 1:
                     f_1_times += 1
                 elif f_1_times == 2:
-                    pass
+                    f_1_times += 1
                 elif f_1_times == 3:
                     f_1_times += 1
                 else:
@@ -148,6 +148,7 @@ def webhook_handler():
                     machine.do_nothing(event)
                 else :
                     machine.do_male2_comp(event,tt,f_1_times)
+
         # if machine.state == "male2":    #t = 2
         #     if  event.message.text == "6tan" or event.message.text == "餐哥" or event.message.text == "鳥屎" or event.message.text == "國棟" or event.message.text == "虧皮" or event.message.text == "館長" or event.message.text == "爆哥" or event.message.text == "Rex" or event.message.text == "KO" or event.message.text == "Toyz" or event.message.text == "NL(MK)" or event.message.text == "老皮" or event.message.text == "史丹利" or event.message.text =="花輪" or event.message.text == "懶貓" or event.message.text == "UZRA":
         #         index = 0
