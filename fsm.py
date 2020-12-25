@@ -181,7 +181,7 @@ class TocMachine(GraphMachine):
         male_used[num2] = -1
         s1 = male_twicher_name[num1]
         s2 = male_twicher_name[num2]
-        temp = x2 + 1 
+        temp = x2
         line_bot_api.reply_message(
             event.reply_token,
             TemplateSendMessage(
