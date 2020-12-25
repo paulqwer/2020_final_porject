@@ -186,7 +186,7 @@ class TocMachine(GraphMachine):
             TemplateSendMessage(
                 alt_text = 'Button template',
                 template = ButtonsTemplate(
-                    title = str(x) + "/4選擇",
+                    title = str(x2) + "/4選擇",
                     text = '請選擇你最喜歡的實況主',
                     actions = [
                         MessageTemplateAction(
@@ -217,13 +217,12 @@ class TocMachine(GraphMachine):
         while index <16:
             male_used[index] = 0
             index += 1
-    def do_print(self,event,f_1_times):
+    def do_print(self,event):
         index = 0
         s = ""
         while index < 16:
             s += str(male_used[index]) + " "
             index += 1
-        s += str(f_1_times)
         reply_token = event.reply_token
         send_text_message(reply_token,s)
         
