@@ -337,6 +337,7 @@ class TocMachine(GraphMachine):
             else :
                 ind += 1
     def fdo_something_ver2(self,event,tx):
+        global female_uese
         ind = 0
         while ind < 16:
             if female_twitcher_name[ind] == tx:
@@ -345,6 +346,7 @@ class TocMachine(GraphMachine):
             else :
                 ind += 1
     def fdo_something_ver3(self,event,t3):
+        global female_uese
         ind = 0
         while ind < 16:
             if female_twitcher_name[ind] == t3:
@@ -353,6 +355,7 @@ class TocMachine(GraphMachine):
             else :
                 ind += 1   
     def fdo_female_comp(self,event,te,x):
+        global female_uese
         index = 0
         while index < 16:
             if female_twitcher_name[index] == te:
