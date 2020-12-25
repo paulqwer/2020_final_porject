@@ -150,7 +150,7 @@ def webhook_handler():
                 x3 = f_3_times
                 if f_3_times == 2:
                     machine.do_something_ver2(event,t3)
-                    machine.do_nothing(event)
+                    # machine.do_nothing(event)
                     machine.to_male4(event)
                 else :
                     machine.do_male3_comp(event,t3,x3)
