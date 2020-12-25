@@ -218,6 +218,15 @@ class TocMachine(GraphMachine):
         while index <16:
             male_used[index] = 0
             index += 1
+    def do_print(self,event):
+        index = 0
+        s = ""
+        while index < 16:
+            s += str(male_used[index]) + " "
+            index += 1
+        reply_token = event.reply_token
+        send_text_message(reply_token,s)
+        
     # def on_enter_comop1(self,event):
     #     num1 = random.randint(0,15)
     #     num2 = random.randint(0,15)
