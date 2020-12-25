@@ -356,7 +356,7 @@ class TocMachine(GraphMachine):
         index = 0
         while index < 16:
             if female_twitcher_name[index] == te:
-                male_used[index] = 2
+                female_uese[index] = 2
                 break
             else :
                 index += 1
@@ -431,6 +431,7 @@ class TocMachine(GraphMachine):
             )
         )
     def on_enter_female(self,event):
+        global female_uese
         num1 = random.randint(0,15)
         num2 = random.randint(0,15)
         while num1 == num2:
