@@ -171,15 +171,15 @@ def webhook_handler():
                     machine.show_final_result(event,t4)
         elif machine.state == "female":
             if event.message.text == "Mita" or event.message.text == "小熊" or event.message.text == "湘湘" or event.message.text == "凱琪" or event.message.text == "愷蒂喵" or event.message.text == "妮妮" or event.message.text == "企鵝妹" or event.message.text == "ViVi" or event.message.text == "蛋捲" or event.message.text == "優格" or event.message.text == "小雲寶寶" or event.message.text == "諾曼" or event.message.text == "妮婭" or event.message.text =="劉萱" or event.message.text == "阿樂" or event.message.text == "天菜娘娘":
-                machine.do_nothing(event)
-                # ft1 = event.message.text
-                # ff_1_times += 1
-                # fx1 = ff_1_times
-                # if ff_1_times == 8:
-                #     machine.fdo_something(event,ft1)
-                #     machine.to_female2(event)
-                # else :
-                #     machine.fdo_female_comp(event,ft1,fx1)
+                # machine.do_nothing(event)
+                ft1 = event.message.text
+                ff_1_times += 1
+                fx1 = ff_1_times
+                if ff_1_times == 8:
+                    machine.fdo_something(event,ft1)
+                    machine.to_female2(event)
+                else :
+                    machine.fdo_female_comp(event,ft1,fx1)
         
 
         # if machine.state == "male2":    #t = 2
