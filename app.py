@@ -209,6 +209,12 @@ def webhook_handler():
                     machine.to_female4(event)
                 else :
                     machine.fdo_female_comp3(event,ft3,x3)
+        elif machine.state == "female4":
+            if event.message.text == "Mita" or event.message.text == "小熊" or event.message.text == "湘湘" or event.message.text == "凱琪" or event.message.text == "愷蒂喵" or event.message.text == "妮妮" or event.message.text == "企鵝妹" or event.message.text == "ViVi" or event.message.text == "蛋捲" or event.message.text == "優格" or event.message.text == "小雲寶寶" or event.message.text == "諾曼" or event.message.text == "妮婭" or event.message.text =="劉萱" or event.message.text == "阿樂" or event.message.text == "天菜娘娘":
+                t4 = event.message.text
+                ff_4_times += 1
+                if ff_4_times == 1:
+                    machine.show_final_result(event,t4)
         # if machine.state == "male2":    #t = 2
         #     if  event.message.text == "6tan" or event.message.text == "餐哥" or event.message.text == "鳥屎" or event.message.text == "國棟" or event.message.text == "虧皮" or event.message.text == "館長" or event.message.text == "爆哥" or event.message.text == "Rex" or event.message.text == "KO" or event.message.text == "Toyz" or event.message.text == "NL(MK)" or event.message.text == "老皮" or event.message.text == "史丹利" or event.message.text =="花輪" or event.message.text == "懶貓" or event.message.text == "UZRA":
         #         index = 0
