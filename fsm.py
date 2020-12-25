@@ -61,9 +61,6 @@ class TocMachine(GraphMachine):
                 )
             )
         )
-    # def on_enter_male(self,event):
-    #     reply_token = event.reply_token
-    #     send_text_message(reply_token, "您已進入男性選擇區 haha")
     
     def on_enter_male(self,event):
         num1 = random.randint(0,15)
@@ -433,6 +430,7 @@ class TocMachine(GraphMachine):
             )
         )
     def on_enter_female(self,event):
+        global female_uese
         num1 = random.randint(0,15)
         num2 = random.randint(0,15)
         while num1 == num2:
@@ -462,38 +460,37 @@ class TocMachine(GraphMachine):
             )
         )   
     def on_enter_female2(self,event):
-        reply_token = event.reply_token
-        send_text_message(reply_token, "nothing")
-        # num1 = random.randint(0,15)
-        # num2 = random.randint(0,15)
-        # while female_uese[num1] != 2:
-        #     num1 = random.randint(0,15)
-        # while num1 == num2 or female_uese[num2] == -1:
-        #     num2 = random.randint(0,15)
-        # female_uese[num1] = -1
-        # female_uese[num2] = -1
-        # s1 = female_twitcher_name[num1]
-        # s2 = female_twitcher_name[num2]
-        # line_bot_api.reply_message(
-        #     event.reply_token,
-        #     TemplateSendMessage(
-        #         alt_text = 'Button template',
-        #         template = ButtonsTemplate(
-        #             title = '1/4選擇',
-        #             text = '請選擇你最喜歡的實況主',
-        #             actions = [
-        #                 MessageTemplateAction(
-        #                     label = s1,
-        #                     text = s1
-        #                 ),
-        #                 MessageTemplateAction(
-        #                     label = s2,
-        #                     text = s2
-        #                 )
-        #             ]
-        #         )
-        #     )
-        # )
+        global female_uese
+        num1 = random.randint(0,15)
+        num2 = random.randint(0,15)
+        while female_uese[num1] != 2:
+            num1 = random.randint(0,15)
+        while num1 == num2 or female_uese[num2] == -1:
+            num2 = random.randint(0,15)
+        female_uese[num1] = -1
+        female_uese[num2] = -1
+        s1 = female_twitcher_name[num1]
+        s2 = female_twitcher_name[num2]
+        line_bot_api.reply_message(
+            event.reply_token,
+            TemplateSendMessage(
+                alt_text = 'Button template',
+                template = ButtonsTemplate(
+                    title = '1/4選擇',
+                    text = '請選擇你最喜歡的實況主',
+                    actions = [
+                        MessageTemplateAction(
+                            label = s1,
+                            text = s1
+                        ),
+                        MessageTemplateAction(
+                            label = s2,
+                            text = s2
+                        )
+                    ]
+                )
+            )
+        )
 
 
     def do_initia(self,event):
