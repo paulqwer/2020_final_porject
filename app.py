@@ -38,8 +38,6 @@ machine = TocMachine(
 app = Flask(__name__, static_url_path="")
 #                       1     2      3      4     5      6     7      8     9         10      11      12    13       14     15    16
 male_twicher_name = ['6tan','餐哥','鳥屎','國棟','虧皮','館長','爆哥','Rex','KO','Toyz','NL(MK)', '老皮','史丹利','花輪','懶貓','UZRA']
-f_1_times = 0
-
 
 
 # get channel_secret and channel_access_token from your environment variable
@@ -95,7 +93,7 @@ def webhook_handler():
         events = parser.parse(body, signature)
     except InvalidSignatureError:
         abort(400)
-    global f_1_times
+    f_1_times = 0
     # if event is MessageEvent and message is TextMessage, then echo text
     for event in events:
         if not isinstance(event, MessageEvent):
