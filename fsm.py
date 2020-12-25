@@ -212,6 +212,14 @@ class TocMachine(GraphMachine):
                 break
             else :
                 ind += 1
+    def do_something_ver2(self,event,tex):
+        ind = 0
+        while ind < 16:
+            if male_twicher_name[ind] == tex:
+                male_used[ind] = 3
+                break
+            else :
+                ind += 1
     def do_initia(self,event):
         index = 0
         while index <16:
@@ -226,45 +234,36 @@ class TocMachine(GraphMachine):
         reply_token = event.reply_token
         send_text_message(reply_token,s)
         
-    # def on_enter_comop1(self,event):
-    #     num1 = random.randint(0,15)
-    #     num2 = random.randint(0,15)
-    #     while male_used[num1] == 0 :
-    #         num1 = random.randint(0,15)
-    #     while num1 == num2 or male_used[num2] == 0:
-    #         num2 = random.randint(0,15)
-    # def do_male_compete_1(self,event,times):
-    #     num1 = random.randint(0,15)
-    #     num2 = random.randint(0,15)
-    #     while male_used[num1] != 0:
-    #         num1 = random.randint(0,15)
-    #     while num1 != num2 and male_used[num2] == 0:
-    #         num2 = random.randint(0,15)
-    #     male_used[num1] = male_used + 1
-    #     male_used[num2] = male_used[num2] + 1
-    #     s1 = male_twicher_name[num1]
-    #     s2 = male_twicher_name[num2]
-    #     line_bot_api.reply_message(
-    #         event.reply_token,[
-    #             TemplateSendMessage(
-    #                 alt_text = 'Button template',
-    #                 template = ButtonsTemplate(
-    #                     title = '選擇',
-    #                     text = '請選擇你最喜歡的實況主',
-    #                     actions = [
-    #                         MessageTemplateAction(
-    #                             label = s1,
-    #                             text = s1
-    #                         ),
-    #                         MessageTemplateAction(
-    #                             label = s2,
-    #                             text = s2
-    #                         )
-    #                     ]
-    #                 )
-    #             )
-    #         ]
-    #     )
-    #     return "第一輪"
-
+    def on_enter_male3(self,event):
+        num1 = random.randint(0,15)
+        num2 = random.randint(0,15)
+        while male_used[num1] != 3:
+            num1 = random.randint(0,15)
+        while num1 == num2 or male_used[num2] == -1:
+            num2 = random.randint(0,15)
+        male_used[num1] = -1
+        male_used[num2] = -1
+        s1 = male_twicher_name[num1]
+        s2 = male_twicher_name[num2]
+        line_bot_api.reply_message(
+            event.reply_token,
+            TemplateSendMessage(
+                alt_text = 'Button template',
+                template = ButtonsTemplate(
+                    title = '1/2選擇',
+                    text = '請選擇你最喜歡的實況主',
+                    actions = [
+                        MessageTemplateAction(
+                            label = s1,
+                            text = s1
+                        ),
+                        MessageTemplateAction(
+                            label = s2,
+                            text = s2
+                        )
+                    ]
+                )
+            )
+        )
+    
        
