@@ -213,6 +213,11 @@ class TocMachine(GraphMachine):
                 break
             else :
                 ind += 1
+    def do_initia(self,event):
+        index = 0
+        while index <16:
+            male_used[index] = 0
+            index += 1
     # def on_enter_comop1(self,event):
     #     num1 = random.randint(0,15)
     #     num2 = random.randint(0,15)
