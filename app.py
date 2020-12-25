@@ -14,7 +14,7 @@ load_dotenv()
 
 
 machine = TocMachine(
-    states=[ "in", "choose","male","male2","male3","male4","female","female2","female3","female4","mcomp1","mcomp2"],
+    states=[ "in", "choose","male","male2","male3","male4","female","female2","female3","female4"],
     transitions=[
         { "trigger" : "go_back_intro", "source" : ["choose","male", "male2","male3","male4","female","female2","female3","female4"], "dest" : "in"},
         { "trigger" : "to_choose", "source" : "in", "dest" : "choose"},
@@ -26,9 +26,6 @@ machine = TocMachine(
         { "trigger" : "to_female2","source":"female","dest":"female2"},
         { "trigger" : "to_female3","source":"female2","dest":"female3"},
         { "trigger" : "to_female4","source":"female3","dest":"female4"},
-        { "trigger" : "to_mcomp1", "source":"male", "dest" : "mcomp1"},
-        { "trigger" : "to_mcomp2", "source":"mcomp1","dest" : "mcomp2"},
-        {"trigger": "go_back", "source": ["state1", "state2"], "dest": "user"},
     ],
     initial="in",
     auto_transitions=False,
