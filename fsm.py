@@ -394,6 +394,7 @@ class TocMachine(GraphMachine):
             )
         )
     def fdo_female_comp2(self,event,tt,xx):
+        global female_uese
         # reply_token = event.reply_token
         # send_text_message(reply_token, x2)
         ind = 0
@@ -407,7 +408,7 @@ class TocMachine(GraphMachine):
         num2 = random.randint(0,15)
         while female_uese != -2:
             num1 = random.randint(0,15)
-        while num1 == num2  or female_uese[num2] != 2:
+        while num1 == num2  or female_uese[num2] == -1 or female_uese[num2] == 3:
             num2 = random.randint(0,15)
         female_uese[num1] = -1
         female_uese[num2] = -1
