@@ -212,10 +212,10 @@ class TocMachine(GraphMachine):
                 break
             else :
                 ind += 1
-    def do_something_ver2(self,event,tex):
+    def do_something_ver2(self,event,t3):
         ind = 0
         while ind < 16:
-            if male_twicher_name[ind] == tex:
+            if male_twicher_name[ind] == t3:
                 male_used[ind] = 3
                 break
             else :
