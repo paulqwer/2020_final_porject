@@ -116,6 +116,13 @@ def webhook_handler():
         print(f"REQUEST BODY: \n{body}")
         if event.message.text == "結束":
             f_1_times = 0
+            f_2_times = 0
+            f_3_times = 0
+            f_4_times = 0
+            ff_1_times = 0
+            ff_2_times = 0
+            ff_3_times = 0
+            ff_4_times = 0
             machine.do_initia(event)
             machine.go_back_intro(event)
         if machine.state == "in":
@@ -182,7 +189,6 @@ def webhook_handler():
         elif machine.state == "female2":
             if event.message.text == "Mita" or event.message.text == "小熊" or event.message.text == "湘湘" or event.message.text == "凱琪" or event.message.text == "愷蒂喵" or event.message.text == "妮妮" or event.message.text == "企鵝妹" or event.message.text == "ViVi" or event.message.text == "蛋捲" or event.message.text == "優格" or event.message.text == "小雲寶寶" or event.message.text == "諾曼" or event.message.text == "妮婭" or event.message.text =="劉萱" or event.message.text == "阿樂" or event.message.text == "天菜娘娘":
                 # machine.do_print(event)
-                machine.do_nothing(event)
                 ft2 = event.message.text 
                 ff_2_times += 1
                 xx = ff_2_times

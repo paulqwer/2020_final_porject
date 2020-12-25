@@ -393,13 +393,13 @@ class TocMachine(GraphMachine):
                 )
             )
         )
-    def fdo_female_comp2(self,event,tt,xx):
+    def fdo_female_comp2(self,event,ft2,xx):
         global female_uese
         # reply_token = event.reply_token
         # send_text_message(reply_token, x2)
         ind = 0
         while ind < 16:
-            if female_twitcher_name[ind] == tt:
+            if female_twitcher_name[ind] == ft2:
                 female_uese[ind] = 3
                 break
             else :
