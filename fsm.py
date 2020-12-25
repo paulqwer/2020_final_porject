@@ -203,9 +203,6 @@ class TocMachine(GraphMachine):
                 )
             )
         )
-    def do_nothing(self,event):
-        reply_token = event.reply_token
-        send_text_message(reply_token, "nothing")
     def do_something(self,event,tex):
         ind = 0
         while ind < 16:
@@ -332,13 +329,15 @@ class TocMachine(GraphMachine):
         )   
 
     def fdo_something(self,event,tx):
-        ind = 0
-        while ind < 16:
-            if female_twitcher_name[ind] == tx:
-                female_uese[ind] = 2
-                break
-            else :
-                ind += 1
+        reply_token = event.reply_token
+        send_text_message(reply_token, "nothing")
+        # ind = 0
+        # while ind < 16:
+        #     if female_twitcher_name[ind] == tx:
+        #         female_uese[ind] = 2
+        #         break
+        #     else :
+        #         ind += 1
     def fdo_something_ver2(self,event,tx):
         ind = 0
         while ind < 16:
@@ -514,5 +513,9 @@ class TocMachine(GraphMachine):
         sss = "感謝您，使用此功能\n您最後的選擇是\n====  "+ t4 +"  ===="
         reply_token = event.reply_token
         send_text_message(reply_token, sss)
+    
+    def do_nothing(self,event):
+        reply_token = event.reply_token
+        send_text_message(reply_token, "nothing")
    
     
