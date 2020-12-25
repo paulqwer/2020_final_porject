@@ -493,7 +493,7 @@ class TocMachine(GraphMachine):
                 )
             )
         )
-    
+
 
     def do_initia(self,event):
         index = 0
