@@ -15,6 +15,7 @@ male_used = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 #                          1      2      3     4      5       6       7      8      9     10       11      12     13     14     15      16
 female_twitcher_name = ['Mita','小熊','湘湘','凱琪','愷蒂喵','妮妮','企鵝妹','ViVi','蛋捲','優格','小雲寶寶','諾曼','妮婭','劉萱','阿樂','天菜娘娘']
 female_uese = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
@@ -225,36 +226,36 @@ class TocMachine(GraphMachine):
             else :
                 ind += 1
     def on_enter_male3(self,event):
+        num1 = random.randint(0,15)
+        num2 = random.randint(0,15)
+        while male_used[num1] != 3:
             num1 = random.randint(0,15)
+        while num1 == num2 or male_used[num2] == -1:
             num2 = random.randint(0,15)
-            while male_used[num1] != 3:
-                num1 = random.randint(0,15)
-            while num1 == num2 or male_used[num2] == -1:
-                num2 = random.randint(0,15)
-            male_used[num1] = -1
-            male_used[num2] = -1
-            s1 = male_twicher_name[num1]
-            s2 = male_twicher_name[num2]
-            line_bot_api.reply_message(
-                event.reply_token,
-                TemplateSendMessage(
-                    alt_text = 'Button template',
-                    template = ButtonsTemplate(
-                        title = '1/2選擇',
-                        text = '請選擇你最喜歡的實況主',
-                        actions = [
-                            MessageTemplateAction(
-                                label = s1,
-                                text = s1
-                            ),
-                            MessageTemplateAction(
-                                label = s2,
-                                text = s2
-                            )
-                        ]
-                    )
+        male_used[num1] = -1
+        male_used[num2] = -1
+        s1 = male_twicher_name[num1]
+        s2 = male_twicher_name[num2]
+        line_bot_api.reply_message(
+            event.reply_token,
+            TemplateSendMessage(
+                alt_text = 'Button template',
+                template = ButtonsTemplate(
+                    title = '1/2選擇',
+                    text = '請選擇你最喜歡的實況主',
+                    actions = [
+                        MessageTemplateAction(
+                            label = s1,
+                            text = s1
+                        ),
+                        MessageTemplateAction(
+                            label = s2,
+                            text = s2
+                        )
+                    ]
                 )
             )
+        )
     def do_male3_comp(self,event,t3,x3):
         ind = 0
         while ind < 16:
@@ -471,26 +472,29 @@ class TocMachine(GraphMachine):
         female_uese[num2] = -1
         s1 = female_twitcher_name[num1]
         s2 = female_twitcher_name[num2]
-        line_bot_api.reply_message(
-            event.reply_token,
-            TemplateSendMessage(
-                alt_text = 'Button template',
-                template = ButtonsTemplate(
-                    title = '1/4選擇',
-                    text = '請選擇你最喜歡的實況主',
-                    actions = [
-                        MessageTemplateAction(
-                            label = s1,
-                            text = s1
-                        ),
-                        MessageTemplateAction(
-                            label = s2,
-                            text = s2
-                        )
-                    ]
-                )
-            )
-        )
+        s = str(s1) + " " + str(s2)
+        reply_token = event.reply_token
+        send_text_message(reply_token, "nothing")
+        # line_bot_api.reply_message(
+        #     event.reply_token,
+        #     TemplateSendMessage(
+        #         alt_text = 'Button template',
+        #         template = ButtonsTemplate(
+        #             title = '1/4選擇',
+        #             text = '請選擇你最喜歡的實況主',
+        #             actions = [
+        #                 MessageTemplateAction(
+        #                     label = s1,
+        #                     text = s1
+        #                 ),
+        #                 MessageTemplateAction(
+        #                     label = s2,
+        #                     text = s2
+        #                 )
+        #             ]
+        #         )
+        #     )
+        # )
 
 
     def do_initia(self,event):
