@@ -365,9 +365,9 @@ class TocMachine(GraphMachine):
                 index += 1
         num1 = random.randint(0,15)
         num2 = random.randint(0,15)
-        while female_uese[num1] == -1 or female_uese[num2] == 2:
+        while female_uese[num1] != 0:
             num1 = random.randint(0,15)
-        while num1 == num2  or female_uese[num2] == -1 or female_uese[num2] == 2:
+        while num1 == num2  or female_uese[num2] != 0:
             num2 = random.randint(0,15)
         female_uese[num1] = -1
         female_uese[num2] = -1
