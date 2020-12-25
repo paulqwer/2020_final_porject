@@ -431,7 +431,6 @@ class TocMachine(GraphMachine):
             )
         )
     def on_enter_female(self,event):
-        global female_uese
         num1 = random.randint(0,15)
         num2 = random.randint(0,15)
         while num1 == num2:
@@ -461,7 +460,13 @@ class TocMachine(GraphMachine):
             )
         )   
     def on_enter_female2(self,event):
-        global female_uese
+        index = 0
+        s = ""
+        while index < 16:
+            s += str(male_used[index]) + " "
+            index += 1
+        reply_token = event.reply_token
+        send_text_message(reply_token,s)
         num1 = random.randint(0,15)
         num2 = random.randint(0,15)
         while female_uese[num1] != 2:
@@ -472,9 +477,6 @@ class TocMachine(GraphMachine):
         female_uese[num2] = -1
         s1 = female_twitcher_name[num1]
         s2 = female_twitcher_name[num2]
-        s = str(s1) + " " + str(s2)
-        reply_token = event.reply_token
-        send_text_message(reply_token, "nothing")
         # line_bot_api.reply_message(
         #     event.reply_token,
         #     TemplateSendMessage(
