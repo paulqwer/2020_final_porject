@@ -129,7 +129,7 @@ def webhook_handler():
             machine.go_back_intro(event)
             mode = 0
         if mode == 0:
-            if event.message.text == "fsm":
+            if event.message.text.lower() == "fsm":
                 machine.show_fsm(event)
             if machine.state == "in":
                 if event.message.text == "介紹":
