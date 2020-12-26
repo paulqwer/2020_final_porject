@@ -117,7 +117,7 @@ class TocMachine(GraphMachine):
         s2 = male_twicher_name[num2]
         u1 = male_url[num1]
         u2 = male_url[num2]
-        text_title = "===========       " + str(x+1) + "       ==========="
+        text_title = "===========       " + str(x+1) + "/8       ==========="
         line_bot_api.reply_message(
             event.reply_token,[
                 TextSendMessage(text = text_title),
