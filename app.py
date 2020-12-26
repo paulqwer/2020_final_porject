@@ -226,9 +226,22 @@ def webhook_handler():
                     else :
                         machine.to_final(event)
         elif mode == 1 :
-            line_bot_api.reply_message(
-                event.reply_token, TextSendMessage(text=event.message.text)
-            )
+            if event.message.text == "結束":
+                f_1_times = 0
+                f_2_times = 0
+                f_3_times = 0
+                f_4_times = 0
+                ff_1_times = 0
+                ff_2_times = 0
+                ff_3_times = 0
+                ff_4_times = 0
+                machine.do_initia(event)
+                machine.go_back_intro(event)
+                mode = 0
+            else :
+                line_bot_api.reply_message(
+                    event.reply_token, TextSendMessage(text=event.message.text)
+                )
 
     return "OK"
 
