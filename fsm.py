@@ -81,6 +81,7 @@ class TocMachine(GraphMachine):
                                 action = PostbackTemplateAction(
                                     label=s1,
                                     text=s1,
+                                    data='action=buy&itemid=1'
                                 )
                             ),
                             ImageCarouselColumn(
@@ -88,6 +89,7 @@ class TocMachine(GraphMachine):
                                 action=PostbackTemplateAction(
                                     label=s2,
                                     text=s2,
+                                    data='action=buy&itemid=2'
                                 )
                             )
                         ]
