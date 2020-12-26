@@ -789,7 +789,7 @@ class TocMachine(GraphMachine):
                 break
             else :
                 ind += 1
-        sss = " 感謝您，使用此功能，您最後的選擇是\n      =======        "+ t4 +"        =======\n       再點擊一次照片會有返回的提示       "
+        sss = " 感謝您，使用此功能，您最後的選擇是\n    =======        "+ t4 +"        =======\n       再點擊一次照片會有返回的提示       "
         line_bot_api.reply_message(
             event.reply_token,[
                 TextSendMessage(text = sss),
@@ -821,4 +821,6 @@ class TocMachine(GraphMachine):
         reply_token = event.reply_token
         send_text_message(reply_token, "輸入{結束}可以重新回到介紹階段")
    
-    
+    def show_fsm(self,event):
+        line_bot_api = LineBotApi(channel_access_token)
+        line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url='https://line-robo.herokuapp.com/show-fsm',preview_image_url='https://line-robo.herokuapp.com/show-fsm'))

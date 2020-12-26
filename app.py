@@ -122,6 +122,8 @@ def webhook_handler():
             ff_4_times = 0
             machine.do_initia(event)
             machine.go_back_intro(event)
+        if event.message.text == "fsm":
+            machine.show_fsm(event)
         if machine.state == "in":
             if event.message.text == "介紹":
                 machine.introduce(event)
