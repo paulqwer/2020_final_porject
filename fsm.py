@@ -789,7 +789,7 @@ class TocMachine(GraphMachine):
                 break
             else :
                 ind += 1
-        sss = "感謝您，使用此功能，您最後的選擇是\n   =======        "+ t4 +"        ======="
+        sss = "感謝您，使用此功能，您最後的選擇是\n   =======        "+ t4 +"        =======\n       再點擊一次照片會有返回的提示       "
         line_bot_api.reply_message(
             event.reply_token,[
                 TextSendMessage(text = sss),
