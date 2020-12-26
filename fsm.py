@@ -3,7 +3,7 @@ import os
 import random
 
 from utils import send_text_message
-from linebot.models import (MessageEvent, TextMessage, TextSendMessage,TemplateSendMessage,ButtonsTemplate,MessageTemplateAction,ImageSendMessage)
+from linebot.models import (MessageEvent, TextMessage, TextSendMessage,TemplateSendMessage,ButtonsTemplate,MessageTemplateAction,ImageSendMessage,ImageCarouselTemplate,ImageCarouselColumn,PostbackTemplateAction )
 from linebot import LineBotApi, WebhookParser
 
 channel_access_token = os.getenv("LINE_CHANNEL_ACCESS_TOKEN", None)
@@ -99,8 +99,29 @@ class TocMachine(GraphMachine):
         s2 = male_twicher_name[num2]
         line_bot_api.reply_message(
             event.reply_token,[
-            ImageSendMessage(original_content_url = "https://pic.pimg.tw/juojou/1502296015-3046965360.png",preview_image_url="https://pic.pimg.tw/juojou/1502296015-3046965360.png"),
-            ImageSendMessage(original_content_url = "https://pic.pimg.tw/juojou/1502296015-3046965360.png",preview_image_url="https://pic.pimg.tw/juojou/1502296015-3046965360.png"),
+            TemplateSendMessage(
+                alt_text = 'ImageCarousel template',
+                template = ImageCarouselTemplate(
+                    colums=[
+                        ImageCarouselColumn(
+                            image_url = 'https://miro.medium.com/max/845/1*XEgA1TTwXa5AvAdw40GFow.png',
+                            action = PostbackTemplateAction(
+                                label='postback1',
+                                text='postback text1',
+                                data='action=buy&itemid=1'
+                            )
+                        ),
+                        ImageCarouselColumn(
+                            image_url='https://miro.medium.com/max/845/1*XEgA1TTwXa5AvAdw40GFow.png',
+                            action=PostbackTemplateAction(
+                                label='postback2',
+                                text='postback text2',
+                                data='action=buy&itemid=2'
+                            )
+                        )
+                    ]
+                )
+            ),
             TemplateSendMessage(
                 alt_text = 'Button template',
                 template = ButtonsTemplate(
