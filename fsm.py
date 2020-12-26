@@ -58,6 +58,7 @@ class TocMachine(GraphMachine):
         )
     
     def on_enter_male(self,event):
+        global male_used
         num1 = random.randint(0,15)
         num2 = random.randint(0,15)
         while num1 == num2:
@@ -78,14 +79,14 @@ class TocMachine(GraphMachine):
                             ImageCarouselColumn(
                                 image_url = u1,
                                 action = PostbackTemplateAction(
-                                    label='postback1',
+                                    label=s1,
                                     text=s1,
                                 )
                             ),
                             ImageCarouselColumn(
                                 image_url=u2,
                                 action=PostbackTemplateAction(
-                                    label='postback2',
+                                    label=s2,
                                     text=s2,
                                 )
                             )
