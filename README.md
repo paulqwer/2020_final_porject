@@ -17,14 +17,23 @@
 * 輸入”聊天 ”，可以回覆與您輸入的相同字句
 * 隨時可以輸入”結束 ”，回到最開始的狀態
 * 進入二選一功能後，點選圖片選取你喜愛的實況主
+![fsm](./img/ex1.jpg)
 
-### Prerequisite
+## Prerequisite
 * Python 3.6 以上
 * HTTPS Server
 
-
+## 使用範例
+![fsm](./img/introduce.jpg)
+![fsm](./img/choose_sexual.jpg)
+![fsm](./img/choose_one.jpg)
+![fsm](./img/final_result.jpg)
+![fsm](./img/fsm_function.jpg)
+![fsm](./img/chat_function.jpg)
+![fsm](./img/leave_chat.jpg)
 
 ## Finite State Machine
+![fsm](./img/fsm.jpg)
 
 ## state 說明
 * in : 使用者一開始的狀態，輸入”開始 ”開始使用
