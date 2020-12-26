@@ -121,7 +121,7 @@ class TocMachine(GraphMachine):
                         )
                     ]
                 )
-            ),
+            )
             # TemplateSendMessage(
             #     alt_text = 'Button template',
             #     template = ButtonsTemplate(
