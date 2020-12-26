@@ -102,7 +102,7 @@ class TocMachine(GraphMachine):
             TemplateSendMessage(
                 alt_text = 'ImageCarousel template',
                 template = ImageCarouselTemplate(
-                    colums=[
+                    columns=[
                         ImageCarouselColumn(
                             image_url = 'https://miro.medium.com/max/845/1*XEgA1TTwXa5AvAdw40GFow.png',
                             action = PostbackTemplateAction(
