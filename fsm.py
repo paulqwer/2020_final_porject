@@ -16,6 +16,7 @@ male_used = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 female_twitcher_name = ['Mita','小熊','湘湘','凱琪','愷蒂喵','妮妮','企鵝妹','ViVi','蛋捲','優格','小雲寶寶','諾曼','妮婭','劉萱','阿樂','天菜娘娘']
 female_uese = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
+
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
@@ -104,7 +105,7 @@ class TocMachine(GraphMachine):
                 template = ImageCarouselTemplate(
                     columns=[
                         ImageCarouselColumn(
-                            image_url = 'https://miro.medium.com/max/845/1*XEgA1TTwXa5AvAdw40GFow.png',
+                            image_url = 'https://img.piku.co.kr/w/uploads/1EzjZH/19094e876afc18befb686aa4bdfcd69d.jpg',
                             action = PostbackTemplateAction(
                                 label='postback1',
                                 text='postback text1',
@@ -112,7 +113,7 @@ class TocMachine(GraphMachine):
                             )
                         ),
                         ImageCarouselColumn(
-                            image_url='https://miro.medium.com/max/845/1*XEgA1TTwXa5AvAdw40GFow.png',
+                            image_url='https://img.piku.co.kr/w/uploads/1EzjZH/19094e876afc18befb686aa4bdfcd69d.jpg',
                             action=PostbackTemplateAction(
                                 label='postback2',
                                 text='postback text2',
