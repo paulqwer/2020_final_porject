@@ -77,7 +77,7 @@ class TocMachine(GraphMachine):
                     template = ImageCarouselTemplate(
                         columns=[
                             ImageCarouselColumn(
-                                image_url = 'https://img.piku.co.kr/w/uploads/1EzjZH/19094e876afc18befb686aa4bdfcd69d.jpg',
+                                image_url = u1,
                                 action = PostbackTemplateAction(
                                     label=s1,
                                     text=s1,
@@ -85,7 +85,7 @@ class TocMachine(GraphMachine):
                                 )
                             ),
                             ImageCarouselColumn(
-                                image_url='https://img.piku.co.kr/w/uploads/1EzjZH/19094e876afc18befb686aa4bdfcd69d.jpg',
+                                image_url=u2,
                                 action=PostbackTemplateAction(
                                     label=s2,
                                     text=s2,
