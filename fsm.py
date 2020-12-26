@@ -19,8 +19,12 @@ male_url = ['https://img.piku.co.kr/w/uploads/1EzjZH/19094e876afc18befb686aa4bdf
 'https://img.piku.co.kr/w/uploads/1EzjZH/801d6720f2615d90cd6de432df033f7d.jpg','https://img.piku.co.kr/w/uploads/1EzjZH/dee9c8e7555f26923ae4c14c67d00ae2.jpg','https://img.piku.co.kr/w/uploads/1EzjZH/1a028760ad1d5313c60f7333700a266e.jpg',
 'https://img.piku.co.kr/w/uploads/1EzjZH/19ff9750e7811d014a76351dd5d82387.jpg']
 #                          1      2      3     4      5       6       7      8      9     10       11      12     13     14     15      16
-female_twitcher_name = ['Mita','小熊','湘湘','凱琪','愷蒂喵','妮妮','企鵝妹','ViVi','蛋捲','優格','小雲寶寶','諾曼','妮婭','劉萱','阿樂','天菜娘娘']
+female_twitcher_name = ['Mita','小熊','湘湘','阿倪','愷蒂喵','妮妮','艾比純純','ViVi','蛋捲','優格','小雲寶寶','諾曼','妮婭','劉萱','阿樂','JoJo']
 female_uese = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+female_url = ['https://img.piku.co.kr/w/uploads/2FC61Y/4ad70587bc3d379ef522e626d83d60ef.jpg','https://img.piku.co.kr/w/uploads/2FC61Y/b1d1978b2a2ce62d69e84b6227fa165f.jpg','https://img.piku.co.kr/w/uploads/2FC61Y/379826cc1ca31a9f08078307ee3b2e50.jpg','https://img.piku.co.kr/w/uploads/2FC61Y/2fae31c8f170cd36a78ef319ffc5a49a.jpg',
+'https://img.piku.co.kr/w/uploads/2OzAmh/e07115cf9d3ebac4d1524d30cf371a36.jpg','https://img.piku.co.kr/w/uploads/2FC61Y/d775bcf314ee1dbc74dc3ca26c10f921.jpg','https://img.piku.co.kr/w/uploads/2FC61Y/9444346936d9d30f8a6f8b3f4eb196d1.jpg','https://img.piku.co.kr/w/uploads/2FC61Y/aa4d260bab696a733542bc9c4fa53e42.jpg',
+'https://img.piku.co.kr/w/uploads/2OzAmh/4b31df601bd73f4f4144b0c21ef8f11d.jpg','https://img.piku.co.kr/w/uploads/2FC61Y/60e6740e8a0face6a96c8073a52e7340.jpg','https://img.piku.co.kr/w/uploads/2FC61Y/b7e622509e038b137b93d1bc4db22487.jpg','https://img.piku.co.kr/w/uploads/2OzAmh/d36b3fb501ca894d685cefe819017688.jpg',
+'https://img.piku.co.kr/w/uploads/2FC61Y/3981d0819503776c64334f1ac3e0d4e6.jpg','https://img.piku.co.kr/w/uploads/2FC61Y/ac3076c718b8eba004d5198bf2e1ba93.jpg','https://img.piku.co.kr/w/uploads/2OzAmh/58d5aec58a8726df7ea3b5af9973ba55.jpg','https://img.piku.co.kr/w/uploads/2FC61Y/88ad4da356726f71522f1cd7c2d9a014.jpg']
 
 
 class TocMachine(GraphMachine):
@@ -441,25 +445,36 @@ class TocMachine(GraphMachine):
         female_uese[num2] = -1
         s1 = female_twitcher_name[num1]
         s2 = female_twitcher_name[num2] 
+        u1 = female_url[num1]
+        u2 = female_url[num2]
+        text_title = "===========       " + str(x+1) + "/8       ==========="
         line_bot_api.reply_message(
-            event.reply_token,
-            TemplateSendMessage(
-                alt_text = 'Button template',
-                template = ButtonsTemplate(
-                    title = str(x+1) + "/8選擇",
-                    text = '請選擇你最喜歡的實況主',
-                    actions = [
-                        MessageTemplateAction(
-                            label = s1,
-                            text = s1
-                        ),
-                        MessageTemplateAction(
-                            label = s2,
-                            text = s2
-                        )
-                    ]
+            event.reply_token,[
+                TextSendMessage(text = text_title),
+                TemplateSendMessage(
+                    alt_text = 'ImageCarousel template',
+                    template = ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url = u1,
+                                action = PostbackTemplateAction(
+                                    label=s1,
+                                    text=s1,
+                                    data='action=buy&itemid=1'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url=u2,
+                                action=PostbackTemplateAction(
+                                    label=s2,
+                                    text=s2,
+                                    data='action=buy&itemid=2'
+                                )
+                            )
+                        ]
+                    )
                 )
-            )
+            ]
         )
     def fdo_female_comp2(self,event,ft2,xx):
         global female_uese
@@ -482,25 +497,36 @@ class TocMachine(GraphMachine):
         female_uese[num2] = -1
         s1 = female_twitcher_name[num1]
         s2 = female_twitcher_name[num2]
+        u1 = female_url[num1]
+        u2 = female_url[num2]
+        text_title = "===========       " + str(xx+1) + "/4       ==========="
         line_bot_api.reply_message(
-            event.reply_token,
-            TemplateSendMessage(
-                alt_text = 'Button template',
-                template = ButtonsTemplate(
-                    title = str(xx+1) + "/4選擇",
-                    text = '請選擇你最喜歡的實況主',
-                    actions = [
-                        MessageTemplateAction(
-                            label = s1,
-                            text = s1
-                        ),
-                        MessageTemplateAction(
-                            label = s2,
-                            text = s2
-                        )
-                    ]
+            event.reply_token,[
+                TextSendMessage(text = text_title),
+                TemplateSendMessage(
+                    alt_text = 'ImageCarousel template',
+                    template = ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url = u1,
+                                action = PostbackTemplateAction(
+                                    label=s1,
+                                    text=s1,
+                                    data='action=buy&itemid=1'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url=u2,
+                                action=PostbackTemplateAction(
+                                    label=s2,
+                                    text=s2,
+                                    data='action=buy&itemid=2'
+                                )
+                            )
+                        ]
+                    )
                 )
-            )
+            ]
         )
     def fdo_female_comp3(self,event,t3,x3):
         global female_uese
@@ -521,25 +547,36 @@ class TocMachine(GraphMachine):
         female_uese[num2] = -1
         s1 = female_twitcher_name[num1]
         s2 = female_twitcher_name[num2]
+        u1 = female_url[num1]
+        u2 = female_url[num2]
+        text_title = "===========       " + str(x3+1) + "/2       ==========="
         line_bot_api.reply_message(
-            event.reply_token,
-            TemplateSendMessage(
-                alt_text = 'Button template',
-                template = ButtonsTemplate(
-                    title = str(x3+1) + "/2選擇",
-                    text = '請選擇你最喜歡的實況主',
-                    actions = [
-                        MessageTemplateAction(
-                            label = s1,
-                            text = s1
-                        ),
-                        MessageTemplateAction(
-                            label = s2,
-                            text = s2
-                        )
-                    ]
+            event.reply_token,[
+                TextSendMessage(text = text_title),
+                TemplateSendMessage(
+                    alt_text = 'ImageCarousel template',
+                    template = ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url = u1,
+                                action = PostbackTemplateAction(
+                                    label=s1,
+                                    text=s1,
+                                    data='action=buy&itemid=1'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url=u2,
+                                action=PostbackTemplateAction(
+                                    label=s2,
+                                    text=s2,
+                                    data='action=buy&itemid=2'
+                                )
+                            )
+                        ]
+                    )
                 )
-            )
+            ]
         )
 
     def on_enter_female(self,event):
@@ -552,26 +589,36 @@ class TocMachine(GraphMachine):
         female_uese[num2] = -1
         s1 = female_twitcher_name[num1]
         s2 = female_twitcher_name[num2]
+        u1 = female_url[num1]
+        u2 = female_url[num2]
         line_bot_api.reply_message(
-            event.reply_token,
-            TemplateSendMessage(
-                alt_text = 'Button template',
-                template = ButtonsTemplate(
-                    title = '1/8選擇',
-                    text = '請選擇你最喜歡的實況主',
-                    actions = [
-                        MessageTemplateAction(
-                            label = s1,
-                            text = s1
-                        ),
-                        MessageTemplateAction(
-                            label = s2,
-                            text = s2
-                        )
-                    ]
+            event.reply_token,[
+                TextSendMessage(text = "===========       1/8       ==========="),
+                TemplateSendMessage(
+                    alt_text = 'ImageCarousel template',
+                    template = ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url = u1,
+                                action = PostbackTemplateAction(
+                                    label=s1,
+                                    text=s1,
+                                    data='action=buy&itemid=1'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url=u2,
+                                action=PostbackTemplateAction(
+                                    label=s2,
+                                    text=s2,
+                                    data='action=buy&itemid=2'
+                                )
+                            )
+                        ]
+                    )
                 )
-            )
-        )   
+            ]
+        )
     def on_enter_female2(self,event):
         # index = 0
         # s = ""
@@ -590,25 +637,35 @@ class TocMachine(GraphMachine):
         female_uese[num2] = -1
         s1 = female_twitcher_name[num1]
         s2 = female_twitcher_name[num2]
+        u1 = female_url[num1]
+        u2 = female_url[num2]
         line_bot_api.reply_message(
-            event.reply_token,
-            TemplateSendMessage(
-                alt_text = 'Button template',
-                template = ButtonsTemplate(
-                    title = '1/4選擇',
-                    text = '請選擇你最喜歡的實況主',
-                    actions = [
-                        MessageTemplateAction(
-                            label = s1,
-                            text = s1
-                        ),
-                        MessageTemplateAction(
-                            label = s2,
-                            text = s2
-                        )
-                    ]
+            event.reply_token,[
+                TextSendMessage(text = "===========       1/4       ==========="),
+                TemplateSendMessage(
+                    alt_text = 'ImageCarousel template',
+                    template = ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url = u1,
+                                action = PostbackTemplateAction(
+                                    label=s1,
+                                    text=s1,
+                                    data='action=buy&itemid=1'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url=u2,
+                                action=PostbackTemplateAction(
+                                    label=s2,
+                                    text=s2,
+                                    data='action=buy&itemid=2'
+                                )
+                            )
+                        ]
+                    )
                 )
-            )
+            ]
         )
     def on_enter_female3(self,event):
         num1 = random.randint(0,15)
@@ -621,25 +678,35 @@ class TocMachine(GraphMachine):
         female_uese[num2] = -1
         s1 = female_twitcher_name[num1]
         s2 = female_twitcher_name[num2]
+        u1 = female_url[num1]
+        u2 = female_url[num2]
         line_bot_api.reply_message(
-            event.reply_token,
-            TemplateSendMessage(
-                alt_text = 'Button template',
-                template = ButtonsTemplate(
-                    title = '1/2選擇',
-                    text = '請選擇你最喜歡的實況主',
-                    actions = [
-                        MessageTemplateAction(
-                            label = s1,
-                            text = s1
-                        ),
-                        MessageTemplateAction(
-                            label = s2,
-                            text = s2
-                        )
-                    ]
+            event.reply_token,[
+                TextSendMessage(text = "===========       1/2       ==========="),
+                TemplateSendMessage(
+                    alt_text = 'ImageCarousel template',
+                    template = ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url = u1,
+                                action = PostbackTemplateAction(
+                                    label=s1,
+                                    text=s1,
+                                    data='action=buy&itemid=1'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url=u2,
+                                action=PostbackTemplateAction(
+                                    label=s2,
+                                    text=s2,
+                                    data='action=buy&itemid=2'
+                                )
+                            )
+                        ]
+                    )
                 )
-            )
+            ]
         )
     def on_enter_female4(self,event):
         global female_uese
@@ -653,26 +720,36 @@ class TocMachine(GraphMachine):
         female_uese[num2] = -1
         s1 = female_twitcher_name[num1]
         s2 = female_twitcher_name[num2]
+        u1 = female_url[num1]
+        u2 = female_url[num2]
         line_bot_api.reply_message(
-            event.reply_token,
-            TemplateSendMessage(
-                alt_text = 'Button template',
-                template = ButtonsTemplate(
-                    title = '1/1選擇',
-                    text = '請選擇你最喜歡的實況主',
-                    actions = [
-                        MessageTemplateAction(
-                            label = s1,
-                            text = s1
-                        ),
-                        MessageTemplateAction(
-                            label = s2,
-                            text = s2
-                        )
-                    ]
+            event.reply_token,[
+                TextSendMessage(text = "===========       1/1       ==========="),
+                TemplateSendMessage(
+                    alt_text = 'ImageCarousel template',
+                    template = ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url = u1,
+                                action = PostbackTemplateAction(
+                                    label=s1,
+                                    text=s1,
+                                    data='action=buy&itemid=1'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url=u2,
+                                action=PostbackTemplateAction(
+                                    label=s2,
+                                    text=s2,
+                                    data='action=buy&itemid=2'
+                                )
+                            )
+                        ]
+                    )
                 )
-            )
-        )   
+            ]
+        )
 
     def do_initia(self,event):
         global male_used,female_uese
@@ -708,6 +785,7 @@ class TocMachine(GraphMachine):
                 u = male_url[ind]
                 break
             elif female_twitcher_name[ind] == t4:
+                u = female_url[ind]
                 break
             else :
                 ind += 1
