@@ -816,5 +816,9 @@ class TocMachine(GraphMachine):
     def do_nothing(self,event):
         reply_token = event.reply_token
         send_text_message(reply_token, "nothing")
+
+    def on_enter_final(self,event):
+        reply_token = event.reply_token
+        send_text_message(reply_token, "輸入{結束}可以重新回到介紹階段")
    
     
