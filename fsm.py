@@ -12,6 +12,12 @@ line_bot_api = LineBotApi(channel_access_token)
 #                       1     2      3      4     5      6     7      8     9     10      11      12    13       14     15    16
 male_twicher_name = ['6tan','餐哥','鳥屎','國棟','虧皮','館長','爆哥','Rex','KO','Toyz','NL(MK)', '老皮','史丹利','花輪','懶貓','UZRA']
 male_used = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+male_url = ['https://img.piku.co.kr/w/uploads/1EzjZH/19094e876afc18befb686aa4bdfcd69d.jpg','https://img.piku.co.kr/w/uploads/1EzjZH/9a86fadea62c342986f940a1f8a4cbf7.jpg','https://img.piku.co.kr/w/uploads/1EzjZH/10c6e257e25b3950f86e0bcd8292161a.jpg',
+'https://img.piku.co.kr/w/uploads/1EzjZH/14bea65518c72195df7bc0591c4a8836.jpg','https://img.piku.co.kr/w/uploads/1EzjZH/bd8b7017e68f39197d7d6d2e32b3f18b.jpg','https://img.piku.co.kr/w/uploads/1EzjZH/06117a47bf17e62bb191b5373031cf49.jpg',
+'https://img.piku.co.kr/w/uploads/1EzjZH/0fc7bdfec9a9aebe8ea6be472079ef03.jpg','https://img.piku.co.kr/w/uploads/1EzjZH/bd4cd92c994b5ef13a96d30002f63e49.jpg','https://img.piku.co.kr/w/uploads/1EzjZH/2eb5d91905274783a523219b14f6754d.jpg',
+'https://img.piku.co.kr/w/uploads/1EzjZH/c82fdf7085cf5f24212790019c97069f.jpg','https://img.piku.co.kr/w/uploads/1EzjZH/79de8d7b5ea9bdafc51a71257e23dade.jpg','https://img.piku.co.kr/w/uploads/1EzjZH/c98fd925d3e87d125815b9a69187c112.jpg',
+'https://img.piku.co.kr/w/uploads/1EzjZH/801d6720f2615d90cd6de432df033f7d.jpg','https://img.piku.co.kr/w/uploads/1EzjZH/dee9c8e7555f26923ae4c14c67d00ae2.jpg','https://img.piku.co.kr/w/uploads/1EzjZH/1a028760ad1d5313c60f7333700a266e.jpg',
+'https://img.piku.co.kr/w/uploads/1EzjZH/19ff9750e7811d014a76351dd5d82387.jpg']
 #                          1      2      3     4      5       6       7      8      9     10       11      12     13     14     15      16
 female_twitcher_name = ['Mita','小熊','湘湘','凱琪','愷蒂喵','妮妮','企鵝妹','ViVi','蛋捲','優格','小雲寶寶','諾曼','妮婭','劉萱','阿樂','天菜娘娘']
 female_uese = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -60,21 +66,27 @@ class TocMachine(GraphMachine):
         male_used[num2] = -1
         s1 = male_twicher_name[num1]
         s2 = male_twicher_name[num2]
+        u1 = male_url[num1]
+        u2 = male_url[num2]
         line_bot_api.reply_message(
             event.reply_token,
             TemplateSendMessage(
-                alt_text = 'Button template',
-                template = ButtonsTemplate(
-                    title = '1/8選擇',
-                    text = '請選擇你最喜歡的實況主',
-                    actions = [
-                        MessageTemplateAction(
-                            label = s1,
-                            text = s1
+                alt_text = 'ImageCarousel template',
+                template = ImageCarouselTemplate(
+                    columns=[
+                        ImageCarouselColumn(
+                            image_url = u1,
+                            action = PostbackTemplateAction(
+                                label='postback1',
+                                text=s1,
+                            )
                         ),
-                        MessageTemplateAction(
-                            label = s2,
-                            text = s2
+                        ImageCarouselColumn(
+                            image_url=u2,
+                            action=PostbackTemplateAction(
+                                label='postback2',
+                                text=s2,
+                            )
                         )
                     ]
                 )
@@ -123,23 +135,6 @@ class TocMachine(GraphMachine):
                     ]
                 )
             )
-            # TemplateSendMessage(
-            #     alt_text = 'Button template',
-            #     template = ButtonsTemplate(
-            #         title = str(x+1) + "/8選擇",
-            #         text = '請選擇你最喜歡的實況主',
-            #         actions = [
-            #             MessageTemplateAction(
-            #                 label = s1,
-            #                 text = s1
-            #             ),
-            #             MessageTemplateAction(
-            #                 label = s2,
-            #                 text = s2
-            #             )
-            #         ]
-            #     )
-            # )
             ]
         )
     def on_enter_male2(self,event):

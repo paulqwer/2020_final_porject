@@ -130,6 +130,7 @@ def webhook_handler():
                 machine.to_choose(event)
         if machine.state == "choose":
             if event.message.text == "男性":
+                print("=========  1/8  =========")
                 machine.to_male(event)
             if event.message.text == "女性":
                 machine.to_female(event)
