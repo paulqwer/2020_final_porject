@@ -26,7 +26,7 @@ machine = TocMachine(
         { "trigger" : "to_female2","source":"female","dest":"female2"},
         { "trigger" : "to_female3","source":"female2","dest":"female3"},
         { "trigger" : "to_female4","source":"female3","dest":"female4"},
-        { "trigger" : "to_final","source":["female4,male4"],"dest":"final"},    ],
+        { "trigger" : "to_final","source":["female4","male4"],"dest":"final"},    ],
     initial="in",
     auto_transitions=False,
     show_conditions=True,
