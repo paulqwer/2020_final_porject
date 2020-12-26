@@ -71,7 +71,7 @@ class TocMachine(GraphMachine):
         u2 = male_url[num2]
         line_bot_api.reply_message(
             event.reply_token,[
-                # TextSendMessage(text = "======   1/8   ======"),
+                TextSendMessage(text = "======   1/8   ======"),
                 TemplateSendMessage(
                     alt_text = 'ImageCarousel template',
                     template = ImageCarouselTemplate(
