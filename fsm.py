@@ -69,28 +69,30 @@ class TocMachine(GraphMachine):
         u1 = male_url[num1]
         u2 = male_url[num2]
         line_bot_api.reply_message(
-            event.reply_token,
-            TemplateSendMessage(
-                alt_text = 'ImageCarousel template',
-                template = ImageCarouselTemplate(
-                    columns=[
-                        ImageCarouselColumn(
-                            image_url = u1,
-                            action = PostbackTemplateAction(
-                                label='postback1',
-                                text=s1,
+            event.reply_token,[
+                TextSendMessage(text = "======   1/8   ======"),
+                TemplateSendMessage(
+                    alt_text = 'ImageCarousel template',
+                    template = ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url = u1,
+                                action = PostbackTemplateAction(
+                                    label='postback1',
+                                    text=s1,
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url=u2,
+                                action=PostbackTemplateAction(
+                                    label='postback2',
+                                    text=s2,
+                                )
                             )
-                        ),
-                        ImageCarouselColumn(
-                            image_url=u2,
-                            action=PostbackTemplateAction(
-                                label='postback2',
-                                text=s2,
-                            )
-                        )
-                    ]
+                        ]
+                    )
                 )
-            )
+            ]
         )
     def do_male1_comp(self,event,te,x):
         index = 0
