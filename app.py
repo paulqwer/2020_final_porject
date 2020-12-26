@@ -113,9 +113,6 @@ def webhook_handler():
             continue
         print(f"\nFSM STATE: {machine.state}")
         print(f"REQUEST BODY: \n{body}")
-        if event.message.text == "聊天":
-            mode = 1
-            send_text_message(event.reply_token, '進入聊天模式，隨時輸入『結束』可返回')
         if event.message.text == "結束":
             f_1_times = 0
             f_2_times = 0
@@ -128,6 +125,9 @@ def webhook_handler():
             machine.do_initia(event)
             machine.go_back_intro(event)
             mode = 0
+        if event.message.text == "聊天":
+            mode = 1
+            send_text_message(event.reply_token, '進入聊天模式，隨時輸入『結束』可返回')
         if mode == 0:
             if event.message.text.lower() == "fsm":
                 machine.show_fsm(event)
