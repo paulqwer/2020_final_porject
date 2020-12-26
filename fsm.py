@@ -99,46 +99,46 @@ class TocMachine(GraphMachine):
         s2 = male_twicher_name[num2]
         line_bot_api.reply_message(
             event.reply_token,[
-            # TemplateSendMessage(
-            #     alt_text = 'ImageCarousel template',
-            #     template = ImageCarouselTemplate(
-            #         colums=[
-            #             ImageCarouselColumn(
-            #                 image_url = 'https://miro.medium.com/max/845/1*XEgA1TTwXa5AvAdw40GFow.png',
-            #                 action = PostbackTemplateAction(
-            #                     label='postback1',
-            #                     text='postback text1',
-            #                     data='action=buy&itemid=1'
-            #                 )
-            #             ),
-            #             ImageCarouselColumn(
-            #                 image_url='https://miro.medium.com/max/845/1*XEgA1TTwXa5AvAdw40GFow.png',
-            #                 action=PostbackTemplateAction(
-            #                     label='postback2',
-            #                     text='postback text2',
-            #                     data='action=buy&itemid=2'
-            #                 )
-            #             )
-            #         ]
-            #     )
-            # ),
             TemplateSendMessage(
-                alt_text = 'Button template',
-                template = ButtonsTemplate(
-                    title = str(x+1) + "/8選擇",
-                    text = '請選擇你最喜歡的實況主',
-                    actions = [
-                        MessageTemplateAction(
-                            label = s1,
-                            text = s1
+                alt_text = 'ImageCarousel template',
+                template = ImageCarouselTemplate(
+                    colums=[
+                        ImageCarouselColumn(
+                            image_url = 'https://miro.medium.com/max/845/1*XEgA1TTwXa5AvAdw40GFow.png',
+                            action = PostbackTemplateAction(
+                                label='postback1',
+                                text='postback text1',
+                                data='action=buy&itemid=1'
+                            )
                         ),
-                        MessageTemplateAction(
-                            label = s2,
-                            text = s2
+                        ImageCarouselColumn(
+                            image_url='https://miro.medium.com/max/845/1*XEgA1TTwXa5AvAdw40GFow.png',
+                            action=PostbackTemplateAction(
+                                label='postback2',
+                                text='postback text2',
+                                data='action=buy&itemid=2'
+                            )
                         )
                     ]
                 )
-            )
+            ),
+            # TemplateSendMessage(
+            #     alt_text = 'Button template',
+            #     template = ButtonsTemplate(
+            #         title = str(x+1) + "/8選擇",
+            #         text = '請選擇你最喜歡的實況主',
+            #         actions = [
+            #             MessageTemplateAction(
+            #                 label = s1,
+            #                 text = s1
+            #             ),
+            #             MessageTemplateAction(
+            #                 label = s2,
+            #                 text = s2
+            #             )
+            #         ]
+            #     )
+            # )
             ]
         )
     def on_enter_male2(self,event):
