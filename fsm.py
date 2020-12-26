@@ -157,25 +157,35 @@ class TocMachine(GraphMachine):
         male_used[num2] = -1
         s1 = male_twicher_name[num1]
         s2 = male_twicher_name[num2]
+        u1 = male_url[num1]
+        u2 = male_url[num2]
         line_bot_api.reply_message(
-            event.reply_token,
-            TemplateSendMessage(
-                alt_text = 'Button template',
-                template = ButtonsTemplate(
-                    title = '1/4選擇',
-                    text = '請選擇你最喜歡的實況主',
-                    actions = [
-                        MessageTemplateAction(
-                            label = s1,
-                            text = s1
-                        ),
-                        MessageTemplateAction(
-                            label = s2,
-                            text = s2
-                        )
-                    ]
+            event.reply_token,[
+                TextSendMessage(text = "===========       1/4       ==========="),
+                TemplateSendMessage(
+                    alt_text = 'ImageCarousel template',
+                    template = ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url = u1,
+                                action = PostbackTemplateAction(
+                                    label=s1,
+                                    text=s1,
+                                    data='action=buy&itemid=1'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url=u2,
+                                action=PostbackTemplateAction(
+                                    label=s2,
+                                    text=s2,
+                                    data='action=buy&itemid=2'
+                                )
+                            )
+                        ]
+                    )
                 )
-            )
+            ]
         )
     def do_male2_comp(self,event,tt,xx):
         # reply_token = event.reply_token
@@ -197,25 +207,36 @@ class TocMachine(GraphMachine):
         male_used[num2] = -1
         s1 = male_twicher_name[num1]
         s2 = male_twicher_name[num2]
+        u1 = male_url[num1]
+        u2 = male_url[num2]
+        text_title = "===========       " + str(xx+1) + "/4       ==========="
         line_bot_api.reply_message(
-            event.reply_token,
-            TemplateSendMessage(
-                alt_text = 'Button template',
-                template = ButtonsTemplate(
-                    title = str(xx+1) + "/4選擇",
-                    text = '請選擇你最喜歡的實況主',
-                    actions = [
-                        MessageTemplateAction(
-                            label = s1,
-                            text = s1
-                        ),
-                        MessageTemplateAction(
-                            label = s2,
-                            text = s2
-                        )
-                    ]
+            event.reply_token,[
+                TextSendMessage(text = text_title),
+                TemplateSendMessage(
+                    alt_text = 'ImageCarousel template',
+                    template = ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url = u1,
+                                action = PostbackTemplateAction(
+                                    label=s1,
+                                    text=s1,
+                                    data='action=buy&itemid=1'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url=u2,
+                                action=PostbackTemplateAction(
+                                    label=s2,
+                                    text=s2,
+                                    data='action=buy&itemid=2'
+                                )
+                            )
+                        ]
+                    )
                 )
-            )
+            ]
         )
     def do_something(self,event,tex):
         ind = 0
@@ -252,25 +273,35 @@ class TocMachine(GraphMachine):
         male_used[num2] = -1
         s1 = male_twicher_name[num1]
         s2 = male_twicher_name[num2]
+        u1 = male_url[num1]
+        u2 = male_url[num2]
         line_bot_api.reply_message(
-            event.reply_token,
-            TemplateSendMessage(
-                alt_text = 'Button template',
-                template = ButtonsTemplate(
-                    title = '1/2選擇',
-                    text = '請選擇你最喜歡的實況主',
-                    actions = [
-                        MessageTemplateAction(
-                            label = s1,
-                            text = s1
-                        ),
-                        MessageTemplateAction(
-                            label = s2,
-                            text = s2
-                        )
-                    ]
+            event.reply_token,[
+                TextSendMessage(text = "===========       1/2       ==========="),
+                TemplateSendMessage(
+                    alt_text = 'ImageCarousel template',
+                    template = ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url = u1,
+                                action = PostbackTemplateAction(
+                                    label=s1,
+                                    text=s1,
+                                    data='action=buy&itemid=1'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url=u2,
+                                action=PostbackTemplateAction(
+                                    label=s2,
+                                    text=s2,
+                                    data='action=buy&itemid=2'
+                                )
+                            )
+                        ]
+                    )
                 )
-            )
+            ]
         )
     def do_male3_comp(self,event,t3,x3):
         ind = 0
@@ -290,25 +321,36 @@ class TocMachine(GraphMachine):
         male_used[num2] = -1
         s1 = male_twicher_name[num1]
         s2 = male_twicher_name[num2]
+        u1 = male_url[num1]
+        u2 = male_url[num2]
+        text_title = "===========       " + str(x3+1) + "/2       ==========="
         line_bot_api.reply_message(
-            event.reply_token,
-            TemplateSendMessage(
-                alt_text = 'Button template',
-                template = ButtonsTemplate(
-                    title = str(x3+1) + "/2選擇",
-                    text = '請選擇你最喜歡的實況主',
-                    actions = [
-                        MessageTemplateAction(
-                            label = s1,
-                            text = s1
-                        ),
-                        MessageTemplateAction(
-                            label = s2,
-                            text = s2
-                        )
-                    ]
+            event.reply_token,[
+                TextSendMessage(text = text_title),
+                TemplateSendMessage(
+                    alt_text = 'ImageCarousel template',
+                    template = ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url = u1,
+                                action = PostbackTemplateAction(
+                                    label=s1,
+                                    text=s1,
+                                    data='action=buy&itemid=1'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url=u2,
+                                action=PostbackTemplateAction(
+                                    label=s2,
+                                    text=s2,
+                                    data='action=buy&itemid=2'
+                                )
+                            )
+                        ]
+                    )
                 )
-            )
+            ]
         )
     def on_enter_male4(self,event):
         num1 = random.randint(0,15)
@@ -321,26 +363,36 @@ class TocMachine(GraphMachine):
         male_used[num2] = -1
         s1 = male_twicher_name[num1]
         s2 = male_twicher_name[num2]
+        u1 = male_url[num1]
+        u2 = male_url[num2]
         line_bot_api.reply_message(
-            event.reply_token,
-            TemplateSendMessage(
-                alt_text = 'Button template',
-                template = ButtonsTemplate(
-                    title = '1/1選擇',
-                    text = '請選擇你最喜歡的實況主',
-                    actions = [
-                        MessageTemplateAction(
-                            label = s1,
-                            text = s1
-                        ),
-                        MessageTemplateAction(
-                            label = s2,
-                            text = s2
-                        )
-                    ]
+            event.reply_token,[
+                TextSendMessage(text = "===========       1/1       ==========="),
+                TemplateSendMessage(
+                    alt_text = 'ImageCarousel template',
+                    template = ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url = u1,
+                                action = PostbackTemplateAction(
+                                    label=s1,
+                                    text=s1,
+                                    data='action=buy&itemid=1'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url=u2,
+                                action=PostbackTemplateAction(
+                                    label=s2,
+                                    text=s2,
+                                    data='action=buy&itemid=2'
+                                )
+                            )
+                        ]
+                    )
                 )
-            )
-        )   
+            ]
+        )
 
     def fdo_something(self,event,tx):
         # reply_token = event.reply_token
@@ -648,7 +700,38 @@ class TocMachine(GraphMachine):
         send_text_message(reply_token,s)
 
     def show_final_result(self,event,t4):
-        sss = "感謝您，使用此功能\n您最後的選擇是\n====  "+ t4 +"  ===="
+        ind = 0
+        u = ""
+        name = ""
+        while ind < 16:
+            if male_twicher_name[ind] == t4:
+                u = male_url[ind]
+                break
+            elif female_twitcher_name[ind] == t4:
+                break
+            else :
+                ind += 1
+        sss = "感謝您，使用此功能，您最後的選擇是\n=======     "+ t4 +"     ======="
+        line_bot_api.reply_message(
+            event.reply_token,[
+                TextSendMessage(text = sss),
+                TemplateSendMessage(
+                    alt_text = 'ImageCarousel template',
+                    template = ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url = u,
+                                action = PostbackTemplateAction(
+                                    label=t4,
+                                    text=t4,
+                                    data='action=buy&itemid=1'
+                                )
+                            )
+                        ]
+                    )
+                )
+            ]
+        )
         reply_token = event.reply_token
         send_text_message(reply_token, sss)
     
