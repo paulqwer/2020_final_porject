@@ -4,6 +4,10 @@
 
 [![Known Vulnerabilities](https://snyk.io/test/github/NCKU-CCS/TOC-Project-2020/badge.svg)](https://snyk.io/test/github/NCKU-CCS/TOC-Project-2020)
 
+```sh
+姓名:林昊紳
+學號:F74072081
+```
 
 ## 前言
 近年來，實況的風氣在台灣越來越盛行，各大平台都爭相開始投入這塊，不管是Twitch、Youtube、Facebook、IG……等等，而今天這個實況主二選一的所有實況主都是台灣有名的實況主，主要是選自Twitch以及Facebook這兩大平台。藉由此功能來選出你心目中的第一名。
