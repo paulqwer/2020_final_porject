@@ -1,80 +1,102 @@
-Lineª© ¥xÆW¹êªp¥D¤G¿ï¤@
-«e¨¥
-ªñ¦~¨Ó¡A¹êªpªº­·®ğ¦b¥xÆW¶V¨Ó¶V²±¦æ¡A¦U¤j¥­¥x³£ª§¬Û¶}©l§ë¤J³o¶ô¡A¤£ºŞ¬OTwitch¡BYoutube¡BFacebook¡BIG¡K¡Kµ¥µ¥¡A¦Ó¤µ¤Ñ³o­Ó¹êªp¥D¤G¿ï¤@ªº©Ò¦³¹êªp¥D³£¬O¥xÆW¦³¦Wªº¹êªp¥D¡A¥D­n¬O¿ï¦ÛTwitch¥H¤ÎFacebook³o¨â¤j¥­¥x¡CÂÇ¥Ñ¦¹¥\¯à¨Ó¿ï¥X§A¤ß¥Ø¤¤ªº²Ä¤@¦W¡C
-ºc·Q
-¨Ï¥ÎButton¡BImageCarouse¡BTextMessage¹ê§@¥\¯à¡AÅı¨Ï¥ÎªÌ¥i¥Hª½±µÂI¨ú¦Û¤v³ßÅwªº¹êªp¡A¥H¤ÎÂ²³æªº¨Ï¥Î»y¥y¡AÅı¨Ï¥ÎªÌ¥i¥H¤è«Kªº¨Ï¥Î¡C
+# Lineç‰ˆ å°ç£å¯¦æ³ä¸»äºŒé¸ä¸€
 
-¨Ï¥Î»¡©ú
-( °ò¥»¾Ş§@
-1. ¿é¤J¡¨¶}©l ¡¨¡A§Y¥i¶}©l¤G¿ï¤@¥\¯à
-2. ¿é¤J¡¨²á¤Ñ ¡¨¡A¥i¥H¦^ÂĞ»P±z¿é¤Jªº¬Û¦P¦r¥y
-3. ÀH®É¥i¥H¿é¤J¡¨µ²§ô ¡¨¡A¦^¨ì³Ì¶}©lªºª¬ºA
-4. ¶i¤J¤G¿ï¤@¥\¯à«á¡AÂI¿ï¹Ï¤ù¿ï¨ú§A³ß·Rªº¹êªp¥D
+[![Maintainability](https://api.codeclimate.com/v1/badges/dc7fa47fcd809b99d087/maintainability)](https://codeclimate.com/github/NCKU-CCS/TOC-Project-2020/maintainability)
+
+[![Known Vulnerabilities](https://snyk.io/test/github/NCKU-CCS/TOC-Project-2020/badge.svg)](https://snyk.io/test/github/NCKU-CCS/TOC-Project-2020)
 
 
-¨Ï¥Î½d¨Ò
+## å‰è¨€
+è¿‘å¹´ä¾†ï¼Œå¯¦æ³çš„é¢¨æ°£åœ¨å°ç£è¶Šä¾†è¶Šç››è¡Œï¼Œå„å¤§å¹³å°éƒ½çˆ­ç›¸é–‹å§‹æŠ•å…¥é€™å¡Šï¼Œä¸ç®¡æ˜¯Twitchã€Youtubeã€Facebookã€IGâ€¦â€¦ç­‰ç­‰ï¼Œè€Œä»Šå¤©é€™å€‹å¯¦æ³ä¸»äºŒé¸ä¸€çš„æ‰€æœ‰å¯¦æ³ä¸»éƒ½æ˜¯å°ç£æœ‰åçš„å¯¦æ³ä¸»ï¼Œä¸»è¦æ˜¯é¸è‡ªTwitchä»¥åŠFacebooké€™å…©å¤§å¹³å°ã€‚è—‰ç”±æ­¤åŠŸèƒ½ä¾†é¸å‡ºä½ å¿ƒç›®ä¸­çš„ç¬¬ä¸€åã€‚
 
+## æ§‹æƒ³
+ä½¿ç”¨Buttonã€ImageCarouseã€TextMessageå¯¦ä½œåŠŸèƒ½ï¼Œè®“ä½¿ç”¨è€…å¯ä»¥ç›´æ¥é»å–è‡ªå·±å–œæ­¡çš„å¯¦æ³ï¼Œä»¥åŠç°¡å–®çš„ä½¿ç”¨èªå¥ï¼Œè®“ä½¿ç”¨è€…å¯ä»¥æ–¹ä¾¿çš„ä½¿ç”¨ã€‚
 
+## ä½¿ç”¨èªªæ˜
+åŸºæœ¬æ“ä½œ
+* è¼¸å…¥â€é–‹å§‹ â€ï¼Œå³å¯é–‹å§‹äºŒé¸ä¸€åŠŸèƒ½
+* è¼¸å…¥â€èŠå¤© â€ï¼Œå¯ä»¥å›è¦†èˆ‡æ‚¨è¼¸å…¥çš„ç›¸åŒå­—å¥
+* éš¨æ™‚å¯ä»¥è¼¸å…¥â€çµæŸ â€ï¼Œå›åˆ°æœ€é–‹å§‹çš„ç‹€æ…‹
+* é€²å…¥äºŒé¸ä¸€åŠŸèƒ½å¾Œï¼Œé»é¸åœ–ç‰‡é¸å–ä½ å–œæ„›çš„å¯¦æ³ä¸»
 
-
-
-
-
-
-³Ì«áªº¿ï¾Ü§¹ªºµ²ªG:
-
+### Prerequisite
+* Python 3.6 ä»¥ä¸Š
+* HTTPS Server
 
 
 
+## Finite State Machine
 
-FSM
+## state èªªæ˜
+* in : ä½¿ç”¨è€…ä¸€é–‹å§‹çš„ç‹€æ…‹ï¼Œè¼¸å…¥â€é–‹å§‹ â€é–‹å§‹ä½¿ç”¨
+* choose : é¸æ“‡å¯¦æ³ä¸»çš„æ€§åˆ¥
+* male: é€²å…¥ç”·æ€§å¯¦æ³ä¸»ç¬¬ä¸€è¼ªæ¯”è¼ƒå–8å¼·
+* male2: é€²å…¥ç”·æ€§å¯¦æ³ä¸»ç¬¬äºŒè¼ªæ¯”è¼ƒå–4å¼·
+* male3: é€²å…¥ç”·æ€§å¯¦æ³ä¸»ç¬¬ä¸‰è¼ªè¼ƒå–å† äº
+* male4: å–ç”·æ€§å¯¦æ³ä¸»å† è»
+* female: é€²å…¥å¥³æ€§å¯¦æ³ä¸»ç¬¬ä¸€è¼ªæ¯”è¼ƒå–8å¼·
+* female2: é€²å…¥å¥³æ€§å¯¦æ³ä¸»ç¬¬äºŒè¼ªæ¯”è¼ƒå–4å¼·
+* female3: é€²å…¥å¥³æ€§å¯¦æ³ä¸»ç¬¬ä¸‰è¼ªæ¯”è¼ƒå–å† äº
+* female4: å–å¥³æ€§å¯¦æ³ä¸»å† è»
+* final: é¡¯ç¤ºæœ€å¾Œçš„çµæœ
 
-State»¡©ú
-„H in : ¨Ï¥ÎªÌ¤@¶}©lªºª¬ºA¡A¿é¤J¡¨¶}©l ¡¨¶}©l¨Ï¥Î
-„H choose : ¿ï¾Ü¹êªp¥Dªº©Ê§O
-„H male: ¶i¤J¨k©Ê¹êªp¥D²Ä¤@½ü¤ñ¸û¨ú8±j
-„H male2: ¶i¤J¨k©Ê¹êªp¥D²Ä¤G½ü¤ñ¸û¨ú4±j
-„H male3: ¶i¤J¨k©Ê¹êªp¥D²Ä¤T½ü¸û¨ú«a¨È
-„H male4: ¨ú¨k©Ê¹êªp¥D«a­x
-„H female: ¶i¤J¤k©Ê¹êªp¥D²Ä¤@½ü¤ñ¸û¨ú8±j
-„H female2: ¶i¤J¤k©Ê¹êªp¥D²Ä¤G½ü¤ñ¸û¨ú4±j
-„H female3: ¶i¤J¤k©Ê¹êªp¥D²Ä¤T½ü¤ñ¸û¨ú«a¨È
-„H female4: ¨ú¤k©Ê¹êªp¥D«a­x
-„H final: Åã¥Ü³Ì«áªºµ²ªG
+## Deploy
+Setting to deploy webhooks on Heroku.
 
-###?Upload?project?to?Heroku
+### Heroku CLI installation
 
-1.?Add?local?project?to?Heroku?project
+* [macOS, Windows](https://devcenter.heroku.com/articles/heroku-cli)
 
-????heroku?git:remote?-a?{HEROKU_APP_NAME}
+or you can use Homebrew (MAC)
+```sh
+brew tap heroku/brew && brew install heroku
+```
 
-2.?Upload?project
+or you can use Snap (Ubuntu 16+)
+```sh
+sudo snap install --classic heroku
+```
 
-????```
-????git?add?.
-????git?commit?-m?"Add?code"
-????git?push?-f?heroku?master
-????```
+### Connect to Heroku
 
-3.?Set?Environment?-?Line?Messaging?API?Secret?Keys
+1. Register Heroku: https://signup.heroku.com
 
-????```
-????heroku?config:set?LINE_CHANNEL_SECRET=your_line_channel_secret
-????heroku?config:set?LINE_CHANNEL_ACCESS_TOKEN=your_line_channel_access_token
-????```
+2. Create Heroku project from website
 
-4.?Your?Project?is?now?running?on?Heroku!
+3. CLI Login
 
-????url:?`{HEROKU_APP_NAME}.herokuapp.com/webhook`
+	`heroku login`
 
-????debug?command:?`heroku?logs?--tail?--app?{HEROKU_APP_NAME}`
+### Upload project to Heroku
 
-5.?If?fail?with?`pygraphviz`?install?errors
+1. Add local project to Heroku project
 
-????run?commands?below?can?solve?the?problems
-????```
-????heroku?buildpacks:set?heroku/python
-????heroku?buildpacks:add?--index?1?heroku-community/apt
-????```
+	heroku git:remote -a {HEROKU_APP_NAME}
 
+2. Upload project
 
+	```
+	git add .
+	git commit -m "Add code"
+	git push -f heroku master
+	```
+
+3. Set Environment - Line Messaging API Secret Keys
+
+	```
+	heroku config:set LINE_CHANNEL_SECRET=your_line_channel_secret
+	heroku config:set LINE_CHANNEL_ACCESS_TOKEN=your_line_channel_access_token
+	```
+
+4. Your Project is now running on Heroku!
+
+	url: `{HEROKU_APP_NAME}.herokuapp.com/webhook`
+
+	debug command: `heroku logs --tail --app {HEROKU_APP_NAME}`
+
+5. If fail with `pygraphviz` install errors
+
+	run commands below can solve the problems
+	```
+	heroku buildpacks:set heroku/python
+	heroku buildpacks:add --index 1 heroku-community/apt
+	```
