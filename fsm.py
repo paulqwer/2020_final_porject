@@ -115,31 +115,35 @@ class TocMachine(GraphMachine):
         male_used[num2] = -1
         s1 = male_twicher_name[num1]
         s2 = male_twicher_name[num2]
+        u1 = male_url[num1]
+        u2 = male_url[num2]
+        text_title = "===========       " + str(x+1) + "       ==========="
         line_bot_api.reply_message(
             event.reply_token,[
-            TemplateSendMessage(
-                alt_text = 'ImageCarousel template',
-                template = ImageCarouselTemplate(
-                    columns=[
-                        ImageCarouselColumn(
-                            image_url = 'https://img.piku.co.kr/w/uploads/1EzjZH/19094e876afc18befb686aa4bdfcd69d.jpg',
-                            action = PostbackTemplateAction(
-                                label='postback1',
-                                text='postback text1',
-                                data='action=buy&itemid=1'
+                TextSendMessage(text = text_title),
+                TemplateSendMessage(
+                    alt_text = 'ImageCarousel template',
+                    template = ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url = u1,
+                                action = PostbackTemplateAction(
+                                    label=s1,
+                                    text=s1,
+                                    data='action=buy&itemid=1'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url=u2,
+                                action=PostbackTemplateAction(
+                                    label=s2,
+                                    text=s2,
+                                    data='action=buy&itemid=2'
+                                )
                             )
-                        ),
-                        ImageCarouselColumn(
-                            image_url='https://img.piku.co.kr/w/uploads/1EzjZH/19094e876afc18befb686aa4bdfcd69d.jpg',
-                            action=PostbackTemplateAction(
-                                label='postback2',
-                                text='postback text2',
-                                data='action=buy&itemid=2'
-                            )
-                        )
-                    ]
+                        ]
+                    )
                 )
-            )
             ]
         )
     def on_enter_male2(self,event):
