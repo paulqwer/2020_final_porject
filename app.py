@@ -225,7 +225,7 @@ def webhook_handler():
                         machine.show_final_result(event,t4)
                     else :
                         machine.to_final(event)
-        if mode == 1 :
+        elif mode == 1 :
             if event.message.text == "結束":
                 f_1_times = 0
                 f_2_times = 0
