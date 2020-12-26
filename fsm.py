@@ -37,7 +37,7 @@ class TocMachine(GraphMachine):
     
     def on_enter_in(self,event):
         reply_token = event.reply_token
-        send_text_message(reply_token,"===歡迎來到台灣實況主二選一===\n===輸入{開始}即可進入===\n===輸入{結束}可以重新開始===")
+        send_text_message(reply_token,"===歡迎來到台灣實況主二選一===\n===輸入{開始}即可進入===\n===輸入{結束}可以重新開始===\n===輸入{fsm}可以得到當下狀態圖===")
 
     def  on_enter_choose(self,event):
         line_bot_api.reply_message(

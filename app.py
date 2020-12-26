@@ -46,6 +46,8 @@ ff_2_times = 0
 ff_3_times = 0
 ff_4_times = 0
 
+mode = 0
+
 # get channel_secret and channel_access_token from your environment variable
 channel_secret = os.getenv("LINE_CHANNEL_SECRET", None)
 channel_access_token = os.getenv("LINE_CHANNEL_ACCESS_TOKEN", None)
@@ -100,7 +102,7 @@ def webhook_handler():
     except InvalidSignatureError:
         abort(400)
 
-    global f_1_times,f_2_times,f_3_times,f_4_times,ff_1_times,ff_2_times,ff_3_times,ff_4_times
+    global f_1_times,f_2_times,f_3_times,f_4_times,ff_1_times,ff_2_times,ff_3_times,ff_4_times,mode
     # if event is MessageEvent and message is TextMessage, then echo text
     for event in events:
         if not isinstance(event, MessageEvent):
@@ -111,6 +113,9 @@ def webhook_handler():
             continue
         print(f"\nFSM STATE: {machine.state}")
         print(f"REQUEST BODY: \n{body}")
+        if event.message.text == "聊天":
+            mode = 1
+            send_text_message(event.reply_token, '進入聊天模式，隨時輸入『結束』可返回')
         if event.message.text == "結束":
             f_1_times = 0
             f_2_times = 0
@@ -122,138 +127,108 @@ def webhook_handler():
             ff_4_times = 0
             machine.do_initia(event)
             machine.go_back_intro(event)
-        if event.message.text == "fsm":
-            machine.show_fsm(event)
-        if machine.state == "in":
-            if event.message.text == "介紹":
-                machine.introduce(event)
-            if event.message.text == "開始":
-                f_1_times = 0
-                machine.to_choose(event)
-        if machine.state == "choose":
-            if event.message.text == "男性":
-                machine.to_male(event)
-            if event.message.text == "女性":
-                machine.to_female(event)
-        if machine.state == "male":     #t = 1
-            if  event.message.text == "6tan" or event.message.text == "餐哥" or event.message.text == "鳥屎" or event.message.text == "國棟" or event.message.text == "虧皮" or event.message.text == "館長" or event.message.text == "爆哥" or event.message.text == "Rex" or event.message.text == "KO" or event.message.text == "Toyz" or event.message.text == "NL(MK)" or event.message.text == "老皮" or event.message.text == "史丹利" or event.message.text =="花輪" or event.message.text == "懶貓" or event.message.text == "UZRA":
-                te = event.message.text
-                f_1_times = f_1_times +1
-                x = f_1_times
-                if f_1_times == 8:
+            mode = 0
+        if mode == 0:
+            if event.message.text.lower() == "fsm":
+                machine.show_fsm(event)
+            if machine.state == "in":
+                if event.message.text == "介紹":
+                    machine.introduce(event)
+                if event.message.text == "開始":
                     f_1_times = 0
-                    machine.do_something(event,te)
-                    machine.to_male2(event)
-                else :
-                    machine.do_male1_comp(event,te,x)
-        elif machine.state == "male2": 
-            if  event.message.text == "6tan" or event.message.text == "餐哥" or event.message.text == "鳥屎" or event.message.text == "國棟" or event.message.text == "虧皮" or event.message.text == "館長" or event.message.text == "爆哥" or event.message.text == "Rex" or event.message.text == "KO" or event.message.text == "Toyz" or event.message.text == "NL(MK)" or event.message.text == "老皮" or event.message.text == "史丹利" or event.message.text =="花輪" or event.message.text == "懶貓" or event.message.text == "UZRA":
-                # machine.do_print(event)
-                tt = event.message.text 
-                f_2_times += 1
-                xx = f_2_times
-                if f_2_times == 4:
-                    machine.do_something_ver2(event,tt)
-                    machine.to_male3(event)
-                else :
-                    machine.do_male2_comp(event,tt,xx)
-        elif machine.state == "male3":
-            if  event.message.text == "6tan" or event.message.text == "餐哥" or event.message.text == "鳥屎" or event.message.text == "國棟" or event.message.text == "虧皮" or event.message.text == "館長" or event.message.text == "爆哥" or event.message.text == "Rex" or event.message.text == "KO" or event.message.text == "Toyz" or event.message.text == "NL(MK)" or event.message.text == "老皮" or event.message.text == "史丹利" or event.message.text =="花輪" or event.message.text == "懶貓" or event.message.text == "UZRA":
-                t3 = event.message.text 
-                f_3_times += 1
-                x3 = f_3_times
-                if f_3_times == 2:
-                    machine.do_something_ver3(event,t3)
+                    machine.to_choose(event)
+            if machine.state == "choose":
+                if event.message.text == "男性":
+                    machine.to_male(event)
+                if event.message.text == "女性":
+                    machine.to_female(event)
+            if machine.state == "male":     #t = 1
+                if  event.message.text == "6tan" or event.message.text == "餐哥" or event.message.text == "鳥屎" or event.message.text == "國棟" or event.message.text == "虧皮" or event.message.text == "館長" or event.message.text == "爆哥" or event.message.text == "Rex" or event.message.text == "KO" or event.message.text == "Toyz" or event.message.text == "NL(MK)" or event.message.text == "老皮" or event.message.text == "史丹利" or event.message.text =="花輪" or event.message.text == "懶貓" or event.message.text == "UZRA":
+                    te = event.message.text
+                    f_1_times = f_1_times +1
+                    x = f_1_times
+                    if f_1_times == 8:
+                        f_1_times = 0
+                        machine.do_something(event,te)
+                        machine.to_male2(event)
+                    else :
+                        machine.do_male1_comp(event,te,x)
+            elif machine.state == "male2": 
+                if  event.message.text == "6tan" or event.message.text == "餐哥" or event.message.text == "鳥屎" or event.message.text == "國棟" or event.message.text == "虧皮" or event.message.text == "館長" or event.message.text == "爆哥" or event.message.text == "Rex" or event.message.text == "KO" or event.message.text == "Toyz" or event.message.text == "NL(MK)" or event.message.text == "老皮" or event.message.text == "史丹利" or event.message.text =="花輪" or event.message.text == "懶貓" or event.message.text == "UZRA":
+                    # machine.do_print(event)
+                    tt = event.message.text 
+                    f_2_times += 1
+                    xx = f_2_times
+                    if f_2_times == 4:
+                        machine.do_something_ver2(event,tt)
+                        machine.to_male3(event)
+                    else :
+                        machine.do_male2_comp(event,tt,xx)
+            elif machine.state == "male3":
+                if  event.message.text == "6tan" or event.message.text == "餐哥" or event.message.text == "鳥屎" or event.message.text == "國棟" or event.message.text == "虧皮" or event.message.text == "館長" or event.message.text == "爆哥" or event.message.text == "Rex" or event.message.text == "KO" or event.message.text == "Toyz" or event.message.text == "NL(MK)" or event.message.text == "老皮" or event.message.text == "史丹利" or event.message.text =="花輪" or event.message.text == "懶貓" or event.message.text == "UZRA":
+                    t3 = event.message.text 
+                    f_3_times += 1
+                    x3 = f_3_times
+                    if f_3_times == 2:
+                        machine.do_something_ver3(event,t3)
+                        # machine.do_nothing(event)
+                        machine.to_male4(event)
+                    else :
+                        machine.do_male3_comp(event,t3,x3)
+            elif machine.state == "male4":
+                if  event.message.text == "6tan" or event.message.text == "餐哥" or event.message.text == "鳥屎" or event.message.text == "國棟" or event.message.text == "虧皮" or event.message.text == "館長" or event.message.text == "爆哥" or event.message.text == "Rex" or event.message.text == "KO" or event.message.text == "Toyz" or event.message.text == "NL(MK)" or event.message.text == "老皮" or event.message.text == "史丹利" or event.message.text =="花輪" or event.message.text == "懶貓" or event.message.text == "UZRA":
+                    t4 = event.message.text
+                    f_4_times += 1
+                    if f_4_times == 1:
+                        machine.show_final_result(event,t4)
+                    else:
+                        machine.to_final(event)
+            elif machine.state == "female":
+                if event.message.text == "Mita" or event.message.text == "小熊" or event.message.text == "湘湘" or event.message.text == "阿倪" or event.message.text == "愷蒂喵" or event.message.text == "妮妮" or event.message.text == "艾比純純" or event.message.text == "ViVi" or event.message.text == "蛋捲" or event.message.text == "優格" or event.message.text == "小雲寶寶" or event.message.text == "諾曼" or event.message.text == "妮婭" or event.message.text =="劉萱" or event.message.text == "阿樂" or event.message.text == "JoJo":
                     # machine.do_nothing(event)
-                    machine.to_male4(event)
-                else :
-                    machine.do_male3_comp(event,t3,x3)
-        elif machine.state == "male4":
-            if  event.message.text == "6tan" or event.message.text == "餐哥" or event.message.text == "鳥屎" or event.message.text == "國棟" or event.message.text == "虧皮" or event.message.text == "館長" or event.message.text == "爆哥" or event.message.text == "Rex" or event.message.text == "KO" or event.message.text == "Toyz" or event.message.text == "NL(MK)" or event.message.text == "老皮" or event.message.text == "史丹利" or event.message.text =="花輪" or event.message.text == "懶貓" or event.message.text == "UZRA":
-                t4 = event.message.text
-                f_4_times += 1
-                if f_4_times == 1:
-                    machine.show_final_result(event,t4)
-                else:
-                    machine.to_final(event)
-        elif machine.state == "female":
-            if event.message.text == "Mita" or event.message.text == "小熊" or event.message.text == "湘湘" or event.message.text == "阿倪" or event.message.text == "愷蒂喵" or event.message.text == "妮妮" or event.message.text == "艾比純純" or event.message.text == "ViVi" or event.message.text == "蛋捲" or event.message.text == "優格" or event.message.text == "小雲寶寶" or event.message.text == "諾曼" or event.message.text == "妮婭" or event.message.text =="劉萱" or event.message.text == "阿樂" or event.message.text == "JoJo":
-                # machine.do_nothing(event)
-                ft1 = event.message.text
-                ff_1_times += 1
-                fx1 = ff_1_times
-                if ff_1_times == 8:
-                    ff_1_times = 0
-                    machine.fdo_something(event,ft1)
-                    machine.to_female2(event)
-                else :
-                    machine.fdo_female_comp(event,ft1,fx1)
-        elif machine.state == "female2":
-            if event.message.text == "Mita" or event.message.text == "小熊" or event.message.text == "湘湘" or event.message.text == "阿倪" or event.message.text == "愷蒂喵" or event.message.text == "妮妮" or event.message.text == "艾比純純" or event.message.text == "ViVi" or event.message.text == "蛋捲" or event.message.text == "優格" or event.message.text == "小雲寶寶" or event.message.text == "諾曼" or event.message.text == "妮婭" or event.message.text =="劉萱" or event.message.text == "阿樂" or event.message.text == "JoJo":
-                #machine.fdo_print(event)
-                ft2 = event.message.text 
-                ff_2_times += 1
-                xx = ff_2_times
-                if ff_2_times == 4:
-                    machine.fdo_something_ver2(event,ft2)
-                    machine.to_female3(event)
-                else :
-                    machine.fdo_female_comp2(event,ft2,xx)
-        elif machine.state == "female3":
-            if event.message.text == "Mita" or event.message.text == "小熊" or event.message.text == "湘湘" or event.message.text == "阿倪" or event.message.text == "愷蒂喵" or event.message.text == "妮妮" or event.message.text == "艾比純純" or event.message.text == "ViVi" or event.message.text == "蛋捲" or event.message.text == "優格" or event.message.text == "小雲寶寶" or event.message.text == "諾曼" or event.message.text == "妮婭" or event.message.text =="劉萱" or event.message.text == "阿樂" or event.message.text == "JoJo":
-                ft3 = event.message.text 
-                ff_3_times += 1
-                x3 = ff_3_times
-                if ff_3_times == 2:
-                    machine.fdo_something_ver3(event,ft3)
-                    # machine.do_nothing(event)
-                    machine.to_female4(event)
-                else :
-                    machine.fdo_female_comp3(event,ft3,x3)
-        elif machine.state == "female4":
-            if event.message.text == "Mita" or event.message.text == "小熊" or event.message.text == "湘湘" or event.message.text == "阿倪" or event.message.text == "愷蒂喵" or event.message.text == "妮妮" or event.message.text == "艾比純純" or event.message.text == "ViVi" or event.message.text == "蛋捲" or event.message.text == "優格" or event.message.text == "小雲寶寶" or event.message.text == "諾曼" or event.message.text == "妮婭" or event.message.text =="劉萱" or event.message.text == "阿樂" or event.message.text == "JoJo":
-                t4 = event.message.text
-                ff_4_times += 1
-                if ff_4_times == 1:
-                    machine.show_final_result(event,t4)
-                else :
-                    machine.to_final(event)
-        # if machine.state == "male2":    #t = 2
-        #     if  event.message.text == "6tan" or event.message.text == "餐哥" or event.message.text == "鳥屎" or event.message.text == "國棟" or event.message.text == "虧皮" or event.message.text == "館長" or event.message.text == "爆哥" or event.message.text == "Rex" or event.message.text == "KO" or event.message.text == "Toyz" or event.message.text == "NL(MK)" or event.message.text == "老皮" or event.message.text == "史丹利" or event.message.text =="花輪" or event.message.text == "懶貓" or event.message.text == "UZRA":
-        #         index = 0
-        #         first_round_times += 1
-        #         while index < 16:
-        #             if male_twicher_name[index] == event.message.text:
-        #                 machine.do_times_count(event,index,first_round_times)
-        #                 break
-        #             else :
-        #                 index += 1
-        #         machine.to_male3(event)
-        # if machine.state == "male3":
-        #     if  event.message.text == "6tan" or event.message.text == "餐哥" or event.message.text == "鳥屎" or event.message.text == "國棟" or event.message.text == "虧皮" or event.message.text == "館長" or event.message.text == "爆哥" or event.message.text == "Rex" or event.message.text == "KO" or event.message.text == "Toyz" or event.message.text == "NL(MK)" or event.message.text == "老皮" or event.message.text == "史丹利" or event.message.text =="花輪" or event.message.text == "懶貓" or event.message.text == "UZRA":
-        #         index = 0
-        #         first_round_times += 1
-        #         while index < 16:
-        #             if male_twicher_name[index] == event.message.text:
-        #                 machine.do_times_count(event,index,first_round_times)
-        #                 break
-        #             else :
-        #                 index += 1
-        #         machine.to_male4(event)    
-                
-        # if machine.state == "mcomp1":
-        #     index = 0   
-        #     while index < 16:
-        #         if event.message.text == male_twicher_name[index]:
-        #             machine.to_mcomp2(event)
-        #             break
-        #         else :
-        #             index = index + 1
-            
-        
-
-
-
+                    ft1 = event.message.text
+                    ff_1_times += 1
+                    fx1 = ff_1_times
+                    if ff_1_times == 8:
+                        ff_1_times = 0
+                        machine.fdo_something(event,ft1)
+                        machine.to_female2(event)
+                    else :
+                        machine.fdo_female_comp(event,ft1,fx1)
+            elif machine.state == "female2":
+                if event.message.text == "Mita" or event.message.text == "小熊" or event.message.text == "湘湘" or event.message.text == "阿倪" or event.message.text == "愷蒂喵" or event.message.text == "妮妮" or event.message.text == "艾比純純" or event.message.text == "ViVi" or event.message.text == "蛋捲" or event.message.text == "優格" or event.message.text == "小雲寶寶" or event.message.text == "諾曼" or event.message.text == "妮婭" or event.message.text =="劉萱" or event.message.text == "阿樂" or event.message.text == "JoJo":
+                    #machine.fdo_print(event)
+                    ft2 = event.message.text 
+                    ff_2_times += 1
+                    xx = ff_2_times
+                    if ff_2_times == 4:
+                        machine.fdo_something_ver2(event,ft2)
+                        machine.to_female3(event)
+                    else :
+                        machine.fdo_female_comp2(event,ft2,xx)
+            elif machine.state == "female3":
+                if event.message.text == "Mita" or event.message.text == "小熊" or event.message.text == "湘湘" or event.message.text == "阿倪" or event.message.text == "愷蒂喵" or event.message.text == "妮妮" or event.message.text == "艾比純純" or event.message.text == "ViVi" or event.message.text == "蛋捲" or event.message.text == "優格" or event.message.text == "小雲寶寶" or event.message.text == "諾曼" or event.message.text == "妮婭" or event.message.text =="劉萱" or event.message.text == "阿樂" or event.message.text == "JoJo":
+                    ft3 = event.message.text 
+                    ff_3_times += 1
+                    x3 = ff_3_times
+                    if ff_3_times == 2:
+                        machine.fdo_something_ver3(event,ft3)
+                        # machine.do_nothing(event)
+                        machine.to_female4(event)
+                    else :
+                        machine.fdo_female_comp3(event,ft3,x3)
+            elif machine.state == "female4":
+                if event.message.text == "Mita" or event.message.text == "小熊" or event.message.text == "湘湘" or event.message.text == "阿倪" or event.message.text == "愷蒂喵" or event.message.text == "妮妮" or event.message.text == "艾比純純" or event.message.text == "ViVi" or event.message.text == "蛋捲" or event.message.text == "優格" or event.message.text == "小雲寶寶" or event.message.text == "諾曼" or event.message.text == "妮婭" or event.message.text =="劉萱" or event.message.text == "阿樂" or event.message.text == "JoJo":
+                    t4 = event.message.text
+                    ff_4_times += 1
+                    if ff_4_times == 1:
+                        machine.show_final_result(event,t4)
+                    else :
+                        machine.to_final(event)
+        elif mode == 1 :
+            line_bot_api.reply_message(
+                event.reply_token, TextSendMessage(text=event.message.text)
+            )
 
     return "OK"
 
